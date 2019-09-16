@@ -1,6 +1,6 @@
 # ForemanLeapp
 
-*Introdction here*
+*Introduction here*
 
 ## Installation
 
@@ -21,7 +21,7 @@ Fork and send a Pull Request. Thanks!
 
 ## Copyright
 
-Copyright (c) *year* *your name*
+Copyright (c) 2019 Inessa Vasilevskaya
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

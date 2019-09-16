@@ -4,12 +4,12 @@ Gem::Specification.new do |s|
   s.name        = 'foreman_leapp'
   s.version     = ForemanLeapp::VERSION
   s.license     = 'GPL-3.0'
-  s.authors     = ['TODO: Your name']
-  s.email       = ['TODO: Your email']
-  s.homepage    = 'TODO'
-  s.summary     = 'TODO: Summary of ForemanLeapp.'
+  s.authors     = ['Inessa Vasilevskaya']
+  s.email       = ['ivasilev@redhat.com']
+  s.homepage    = 'https://github.com/fernflower/foreman_leapp'
+  s.summary     = 'A foreman plugin to support inplace rhel7->rhel8 upgrades with leapp utility'
   # also update locale/gemspec.rb
-  s.description = 'TODO: Description of ForemanLeapp.'
+  s.description = 'A foreman plugin to support inplace rhel7->rhel8 upgrades with leapp utility'
 
   s.files = Dir['{app,config,db,lib,locale}/**/*'] + ['LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
