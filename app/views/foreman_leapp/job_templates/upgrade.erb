@@ -1,0 +1,20 @@
+<%#
+kind: job_template
+name: Run upgrade via leapp
+job_category: Commands
+description_format: 'Upgrade rhel7 host'
+provider_type: SSH
+template_inputs:
+- name: debug
+  description: enabling --debug option of leapp
+  input_type: user
+  required: false
+  options: "true\nfalse"
+- name: reboot
+  description: reboot the vm automaticaly to continue with the upgrade
+  input_type: user
+  required: false
+  options: "false\ntrue"
+%>
+
+leapp upgrade <%= "--debug" if input('debug') == "true" %> <%= "--reboot" if input('reboot') == "true" %>

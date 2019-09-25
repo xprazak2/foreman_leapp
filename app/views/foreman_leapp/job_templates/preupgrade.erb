@@ -12,8 +12,4 @@ template_inputs:
   options: "true\nfalse"
 %>
 
-<% if input("debug") == "True" %>
-leapp preupgrade --debug
-<% else %>
-leapp preupgrade
-<% end%>
+leapp preupgrade <%= "--debug" if input('debug') == "true" %>

@@ -8,7 +8,7 @@ User.as_anonymous_admin do
         template = JobTemplate.import_raw!(File.read(template),
                                            :default => true,
                                            :locked => true,
-                                           :update => false)
+                                           :update => true)
         template.organizations = organizations if template.present?
         template.locations = locations if template.present?
       end
