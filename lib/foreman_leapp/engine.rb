@@ -18,20 +18,8 @@ module ForemanLeapp
       Foreman::Plugin.register :foreman_leapp do
         requires_foreman '>= 1.16'
 
-        # Add permissions
-        security_block :foreman_leapp do
-          permission :view_foreman_leapp, :'foreman_leapp/hosts' => [:new_action]
-        end
-
         # Add a new role called 'Discovery' if it doesn't exist
         role 'ForemanLeapp', [:view_foreman_leapp]
-
-        # add menu entry
-        menu :top_menu, :template,
-             url_hash: { controller: :'foreman_leapp/hosts', action: :new_action },
-             caption: 'ForemanLeapp',
-             parent: :hosts_menu,
-             after: :hosts
 
         # add dashboard widget
         widget 'foreman_leapp_widget', name: N_('Foreman plugin template widget'), sizex: 4, sizey: 1
