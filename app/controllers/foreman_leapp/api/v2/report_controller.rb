@@ -4,18 +4,18 @@ module ForemanLeapp
       class ReportController < ::Api::V2::BaseController
   
         def create
-          require 'date'
           date = DateTime.now
           host_name_or_id = params['host']
-          # XXX find appropriate host by id or name
-          host = Host.find_by(name: host_name_or_id) || Host.find_by(id: host_name_or_id)
+          status = params['status']
+          host = Host.where(:name => host_name_or_id).or(Host.where(:id => host_name_or_id)).first
           report = PreupgradeReport.create_report(host, date, status, params['report'])
           render :json => report
         end
 
         def fetch
-          report = PreupgradeReport.find_report(params['id'])
-          full_report = report.attributes.merge({'messages': report.messages})
+          report = PreupgradeReport.find(params['id'])
+          full_report = report.attributes.merge('messages': report.messages,
+                                                'entries': report.preupgrade_report_entries)
           render :json => full_report
         end
       end
