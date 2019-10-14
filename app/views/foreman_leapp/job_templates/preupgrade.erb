@@ -10,6 +10,19 @@ template_inputs:
   input_type: user
   required: false
   options: "true\nfalse"
+- name: leapp_auth_token_input
+  description: foreman user token to use with leapp for foreman_leapp API access
+  input_type: variable
+  required: false
+  variable_name: "leapp_auth_token"
+- name: leapp_auth_user_input
+  description: foreman user name to use with leapp for foreman_leapp API access
+  input_type: variable
+  required: false
+  variable_name: "leapp_auth_user"
 %>
 
 leapp preupgrade <%= "--debug" if input('debug') == "true" %>
+# XXX FIXME probably will be moved to client
+echo "{\"report\": $(cat /var/log/leapp/leapp-report.json), \"host\": \"$(hostname)\", \"status\": $(echo $?)}" > /tmp/foreman_leapp_preupgrade.json
+curl -H 'Content-Type: application/json' -u <%=input('leapp_auth_user_input')%>:<%=input('leapp_auth_token_input')%> -X POST <%=foreman_server_url%>/api/v2/leapp/report -d @/tmp/foreman_leapp_preupgrade.json
