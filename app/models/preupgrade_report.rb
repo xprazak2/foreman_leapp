@@ -1,6 +1,5 @@
 class PreupgradeReport < ::Report
   has_many :preupgrade_report_entries
-  has_many :messages, :through => :preupgrade_report_entries
 
   def self.create_report(host, date, status, data)
     report = PreupgradeReport.create(:host => host,
@@ -8,12 +7,7 @@ class PreupgradeReport < ::Report
                                      :status => status)
     if data[:entries]
       data[:entries].each do |entry|
-        # XXX FIXME might be removed
-        msg = Message.find_or_create(entry[:title])
-        msg.attributes = {}
-        msg.save!
-        PreupgradeReportEntry.create!(:message => msg,
-                                      :preupgrade_report => report,
+        PreupgradeReportEntry.create!(:preupgrade_report => report,
                                       :hostname => host.hostname,
                                       :title => entry[:title],
                                       :actor => entry[:actor],
