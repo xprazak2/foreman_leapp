@@ -12,7 +12,7 @@ class CreatePreupgradeReportEntries < ActiveRecord::Migration[4.2]
       t.integer :leapp_run_id, :null => false
       # those will be used to dump all remediations specific data as is
       t.text :tags
-      t.text :details
+      t.text :detail
     end
     add_index :preupgrade_report_entries, :preupgrade_report_id
   end
