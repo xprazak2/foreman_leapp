@@ -15,7 +15,7 @@ class PreupgradeReport < ::Report
                                       :audience => entry[:audience],
                                       :severity => entry[:severity],
                                       :tags => entry[:tags],
-                                      :details => entry[:details],
+                                      :detail => entry[:detail],
                                       :leapp_run_id => data[:leapp_run_id])
       end
     end
