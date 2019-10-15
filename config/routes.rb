@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  get 'api/v2/leapp/report/:id', to: 'foreman_leapp/api/v2/report#fetch'
-  post 'api/v2/leapp/report', to: 'foreman_leapp/api/v2/report#create'
+  namespace :api, :defaults => {:format => 'json'} do
+    scope '(:apiv)', :module => :v2, :defaults => {:apiv => 'v2'}, :apiv => /v2/, :constraints => ApiConstraints.new(:version => 2, :default => true) do
+      resources :preupgrade_reports, only: [:show, :create]
+    end
+  end
 end
