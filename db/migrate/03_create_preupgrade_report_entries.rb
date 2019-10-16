@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePreupgradeReportEntries < ActiveRecord::Migration[4.2]
   def up
     create_table :preupgrade_report_entries do |t|

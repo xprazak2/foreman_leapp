@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanLeapp
   class Engine < ::Rails::Engine
     engine_name 'foreman_leapp'
@@ -31,7 +33,7 @@ module ForemanLeapp
       begin
         Host::Managed.send(:include, ForemanLeapp::HostExtensions)
         HostsHelper.send(:include, ForemanLeapp::HostsHelperExtensions)
-      rescue => e
+      rescue StandardError => e
         Rails.logger.warn "ForemanLeapp: skipping engine hook (#{e})"
       end
     end
@@ -43,7 +45,7 @@ module ForemanLeapp
     end
 
     initializer 'foreman_leapp.register_gettext', after: :load_config_initializers do |_app|
-      locale_dir = File.join(File.expand_path('../../..', __FILE__), 'locale')
+      locale_dir = File.join(File.expand_path('../..', __dir__), 'locale')
       locale_domain = 'foreman_leapp'
       Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
     end
