@@ -24,5 +24,5 @@ template_inputs:
 
 leapp preupgrade <%= "--debug" if input('debug') == "true" %>
 # XXX FIXME probably will be moved to client
-echo "{\"preupgrade_report\": $(cat /var/log/leapp/leapp-report.json), \"host\": \"$(hostname)\", \"status\": $(echo $?)}" > /tmp/foreman_leapp_preupgrade.json
+echo "{\"preupgrade_report\": $(cat /var/log/leapp/leapp-report.json), \"host\": \"<%=@host.name%>\", \"status\": $(echo $?)}" > /tmp/foreman_leapp_preupgrade.json
 curl -H 'Content-Type: application/json' -u <%=input('leapp_auth_user_input')%>:<%=input('leapp_auth_token_input')%> -X POST <%=foreman_server_url%>/api/v2/preupgrade_reports -d @/tmp/foreman_leapp_preupgrade.json
