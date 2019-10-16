@@ -20,9 +20,6 @@ module ForemanLeapp
       Foreman::Plugin.register :foreman_leapp do
         requires_foreman '>= 1.16'
 
-        # Add a new role called 'Discovery' if it doesn't exist
-        role 'ForemanLeapp', [:view_foreman_leapp]
-
         # add dashboard widget
         widget 'foreman_leapp_widget', name: N_('Foreman plugin template widget'), sizex: 4, sizey: 1
       end
