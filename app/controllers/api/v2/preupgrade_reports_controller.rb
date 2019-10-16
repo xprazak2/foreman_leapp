@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Api
   module V2
     class PreupgradeReportsController < ::Api::V2::BaseController
       def create
-        date = DateTime.now
+        date = DateTime.now.utc
         host_name_or_id = params['host']
         status = params['status']
         host = Host.where(:name => host_name_or_id).or(Host.where(:id => host_name_or_id)).first

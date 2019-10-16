@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rake/testtask'
 
 # Tasks
@@ -31,7 +33,7 @@ namespace :foreman_leapp do
                          "#{ForemanLeapp::Engine.root}/lib/**/*.rb",
                          "#{ForemanLeapp::Engine.root}/test/**/*.rb"]
       end
-    rescue
+    rescue StandardError
       puts 'Rubocop not loaded.'
     end
 

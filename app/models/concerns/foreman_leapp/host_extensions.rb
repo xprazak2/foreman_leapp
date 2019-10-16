@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ForemanLeapp
   module HostExtensions
     extend ActiveSupport::Concern
@@ -7,13 +9,11 @@ module ForemanLeapp
     end
 
     # create or overwrite instance methods...
-    def instance_method_name
-    end
+    def instance_method_name; end
 
     module ClassMethods
       # create or overwrite class methods...
-      def class_method_name
-      end
+      def class_method_name; end
     end
   end
 end
