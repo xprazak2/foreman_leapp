@@ -15,8 +15,8 @@ class PreupgradeReport < ::Report
                                     :summary => entry[:summary],
                                     :audience => entry[:audience],
                                     :severity => entry[:severity],
-                                    :tags => entry[:tags],
-                                    :detail => entry[:detail],
+                                    :tags => entry[:tags].to_json,
+                                    :detail => entry[:detail].to_json,
                                     :leapp_run_id => data[:leapp_run_id])
     end
     report.save!
