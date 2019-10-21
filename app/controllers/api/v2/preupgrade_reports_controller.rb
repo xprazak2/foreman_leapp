@@ -3,7 +3,7 @@
 module Api
   module V2
     class PreupgradeReportsController < ::Api::V2::BaseController
-      before_action :resolve_host, only: [:create]
+      before_action :resolve_host, only: [:create, :last_report]
       def resolve_host
         host_name_or_id = params['host']
         @host = Host.where(:name => host_name_or_id).or(Host.where(:id => host_name_or_id)).first
@@ -24,6 +24,16 @@ module Api
         report = PreupgradeReport.find(params['id'])
         full_report = report.attributes.merge('entries': report.preupgrade_report_entries)
         render :json => full_report
+      end
+
+      def last_report
+        if @host.nil?
+          render :json => { "error": format("Couldn't find host %<host>s", host: params['host']) }
+        else
+          report = PreupgradeReport.where(:host => @host).order(:reported_at).last
+          full_report = report.attributes.merge('entries': report.preupgrade_report_entries)
+          render :json => full_report
+        end
       end
     end
   end
