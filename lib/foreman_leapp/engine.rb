@@ -5,6 +5,7 @@ module ForemanLeapp
     engine_name 'foreman_leapp'
 
     config.autoload_paths += Dir["#{config.root}/app/controllers/concerns"]
+    config.autoload_paths += Dir["#{config.root}/app/controllers/api/v2/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/helpers/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/models/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/overrides"]
