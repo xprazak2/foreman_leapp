@@ -8,16 +8,14 @@ class PreupgradeReport < ::Report
                                      :reported_at => date,
                                      :status => status)
     data[:entries]&.each do |entry|
-      PreupgradeReportEntry.create!(:preupgrade_report => report,
-                                    :hostname => host.hostname,
-                                    :title => entry[:title],
-                                    :actor => entry[:actor],
-                                    :summary => entry[:summary],
-                                    :audience => entry[:audience],
-                                    :severity => entry[:severity],
-                                    :tags => entry[:tags].to_json,
-                                    :detail => entry[:detail].to_json,
-                                    :leapp_run_id => data[:leapp_run_id])
+      data = entry.slice(:title, :actor, :summary, :audience, :severity)
+                  .merge(:preupgrade_report => report,
+                         :hostname => host.hostname,
+                         :tags => entry[:tags].to_json,
+                         :detail => entry[:detail].to_json,
+                         :leapp_run_id => data[:leapp_run_id])
+      data.permit!
+      PreupgradeReportEntry.create! data
     end
     report.save!
     report

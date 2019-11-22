@@ -3,7 +3,7 @@
 module Api
   module V2
     class PreupgradeReportsController < ::Api::V2::BaseController
-      before_action :resolve_host, only: [:create, :last_report]
+      before_action :resolve_host, only: %i[create last_report]
       def resolve_host
         host_name_or_id = params['host']
         @host = Host.where(:name => host_name_or_id).or(Host.where(:id => host_name_or_id)).first

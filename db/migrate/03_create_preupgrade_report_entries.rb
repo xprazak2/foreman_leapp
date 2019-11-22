@@ -11,7 +11,7 @@ class CreatePreupgradeReportEntries < ActiveRecord::Migration[4.2]
       t.text :summary, :limit => 1024
       t.string :audience, :limit => 255, :null => false
       t.string :severity, :limit => 255, :null => false
-      t.integer :leapp_run_id, :null => false
+      t.string :leapp_run_id, :null => false
       # those will be used to dump all remediations specific data as is
       t.text :tags
       t.text :detail
