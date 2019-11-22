@@ -3,7 +3,7 @@
 module Api
   module V2
     class AggregationController < ::Api::V2::BaseController
-      include ::Api::V2::Utils
+      include Utils
       def aggregate_by_invocation_id
         invoc_id = params[:id]
         reports = []
