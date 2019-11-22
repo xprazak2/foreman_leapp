@@ -28,8 +28,8 @@ module ForemanLeapp
     # Include concerns in this config.to_prepare block
     config.to_prepare do
       begin
-        Host::Managed.send(:include, ForemanLeapp::HostExtensions)
-        HostsHelper.send(:include, ForemanLeapp::HostsHelperExtensions)
+        Host::Managed.include ForemanLeapp::HostExtensions
+        HostsHelper.include ForemanLeapp::HostsHelperExtensions
       rescue StandardError => e
         Rails.logger.warn "ForemanLeapp: skipping engine hook (#{e})"
       end
