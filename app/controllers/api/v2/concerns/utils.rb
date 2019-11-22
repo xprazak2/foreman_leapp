@@ -4,12 +4,15 @@ module Utils
   extend ActiveSupport::Concern
 
   def last_report(host_id, date = nil)
-    full_report = {}
+    res = {}
     report = PreupgradeReport.where(:host => host_id).order(:reported_at).last
-    # XXX FIXME make sure date comparison is right
-    unless report.nil? || !(date && report.reported_at.to_f >= date.to_f)
-      full_report = report.attributes.merge('entries': report.preupgrade_report_entries)
+    unless report.nil?
+      res = full_report(report) if date.nil? || date && report.reported_at.to_f >= date.to_f
     end
-    full_report
+    res
+  end
+
+  def full_report(report)
+    report.nil? ? {} : report.attributes.merge('entries': report.preupgrade_report_entries)
   end
 end

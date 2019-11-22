@@ -6,7 +6,7 @@ Rails.application.routes.draw do
                      :constraints => ApiConstraints.new(:version => 2, :default => true) do
       resources :preupgrade_reports, only: %i[show create]
       # XXX FIXME find a way to utilize built-in routing
-      get '/preupgrade_reports/hosts/:host/last', :to => 'preupgrade_reports#last_report'
+      get '/preupgrade_reports/hosts/:host/last', :to => 'preupgrade_reports#show_last_report'
       get '/aggregation/:id', :to => 'aggregation#aggregate_by_invocation_id'
     end
   end
