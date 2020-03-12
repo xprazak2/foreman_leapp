@@ -23,6 +23,9 @@ module ForemanLeapp
 
         # add dashboard widget
         widget 'foreman_leapp_widget', name: N_('Foreman plugin template widget'), sizex: 4, sizey: 1
+
+        # make sure is available to the foreman
+        register_global_js_file 'fills'
       end
     end
 
