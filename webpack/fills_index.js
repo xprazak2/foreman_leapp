@@ -5,6 +5,6 @@ import { addGlobalFill } from 'foremanReact/components/common/Fill/GlobalFill';
 // registerReducer('[plugin]-extends', extendReducer);
 
 console.log(' >>>>>>>  LEAPP PLUGIN');
-addGlobalFill('jobInvocationsTabHeaderSlot', '[leapp]ReportTabHeader',   <li><a href="#leapp_upgrade" data-toggle="tab">In-Place Upgrade Reports</a></li>, 100);
+// addGlobalFill('jobInvocationsTabHeaderSlot', '[leapp]ReportTabHeader',   <li><a href="#leapp_upgrade" data-toggle="tab">In-Place Upgrade Reports</a></li>, 100);
 
-addGlobalFill('jobInvocationsTabContentSlot', '[leapp]ReportTabContent', <div>TabContent</div>, 100);
+// addGlobalFill('jobInvocationsTabContentSlot', '[leapp]ReportTabContent', <div>TabContent</div>, 100);

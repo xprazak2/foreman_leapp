@@ -26,6 +26,13 @@ module ForemanLeapp
 
         # make sure is available to the foreman
         register_global_js_file 'fills'
+
+        extend_page("job_invocations/show") do |context|
+          context.add_pagelet :main_tabs,
+            :name => _("LEAPP"),
+            :partial => "job_invocations/leapp_tab",
+            :onlyif => proc { |job_invocation| true }
+        end
       end
     end
 
