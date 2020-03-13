@@ -4,8 +4,9 @@
 /* eslint-disable import/no-unresolved */
 
 import componentRegistry from 'foremanReact/components/componentRegistry';
-import Application from './containers/Application/index';
-import './redux';
+// cant resolve this for now
+// import Application from './containers/Application/index';
+//import './redux';
 // Not currently mocking anything
 // import './services/api/setupMocks';
 
