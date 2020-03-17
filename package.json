@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "node node_modules/.bin/jest webpack",
-    "lint": "./node_modules/.bin/eslint -c .eslintrc webpack/"
+    "lint": "./node_modules/.bin/eslint -c .eslintrc webpack/",
+    "link-leapp-js": "./script/link_leapp_js.sh"
   },
   "repository": {
     "type": "git",
