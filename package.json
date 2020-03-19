@@ -1,0 +1,39 @@
+{
+  "name": "foreman_leapp",
+  "version": "0.0.1",
+  "description": "Plugin for RHEL upgrades using Foreman.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "tfm-lint --plugin -d /webpack",
+    "test": "tfm-test --plugin",
+    "test:watch": "tfm-test --plugin --watchAll",
+    "test:current": "tfm-test --plugin --watch",
+    "publish-coverage": "tfm-publish-coverage",
+    "stories": "tfm-stories --plugin",
+    "stories:build": "tfm-build-stories --plugin",
+    "stories:deploy": "surge --project .storybook-dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oamg/foreman_leapp.git"
+  },
+  "author": "LEAPP team + The Foreman team",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "http://projects.theforeman.org/projects/foreman_leapp/issues"
+  },
+  "homepage": "https://github.com/oamg/foreman_leapp",
+  "peerDependencies": {
+    "@theforeman/vendor": ">= 4.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.0",
+    "@theforeman/env": "^4.2.1",
+    "@theforeman/builder": "^4.2.1",
+    "@theforeman/vendor-dev": "^4.2.1",
+    "@theforeman/test": "^4.2.1",
+    "babel-eslint": "^10.0.0",
+    "eslint": "^6.8.0",
+    "prettier": "^1.19.1"
+  }
+}
