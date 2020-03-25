@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreupgradeReportEntry should render 1`] = `
+<ListViewItem
+  actions={null}
+  additionalInfo={
+    Array [
+      <StringInfoItem
+        attr="title"
+        elipsed={false}
+        entry={
+          Object {
+            "id": 5,
+            "preupgradeReportId": 7,
+            "severity": "low",
+            "title": "no title",
+          }
+        }
+        mapAttr={[Function]}
+        translate={false}
+      />,
+      <StringInfoItem
+        attr="severity"
+        elipsed={false}
+        entry={
+          Object {
+            "id": 5,
+            "preupgradeReportId": 7,
+            "severity": "low",
+            "title": "no title",
+          }
+        }
+        mapAttr={[Function]}
+        translate={false}
+      />,
+    ]
+  }
+  checkboxInput={null}
+  className="listViewItem--listItemVariants"
+  compoundExpand={false}
+  compoundExpanded={false}
+  description={null}
+  heading={null}
+  hideCloseIcon={false}
+  initExpanded={false}
+  key="5"
+  leftContent={null}
+  onCloseCompoundExpand={[Function]}
+  onExpand={[Function]}
+  onExpandClose={[Function]}
+  stacked={true}
+/>
+`;

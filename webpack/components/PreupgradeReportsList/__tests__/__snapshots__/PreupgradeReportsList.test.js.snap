@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreupgradeReportsList should render 1`] = `
+<ListView
+  className=""
+>
+  <PreupgradeReportEntry
+    entry={
+      Object {
+        "severity": "Too severe to talk about",
+        "title": "Fix me!",
+      }
+    }
+    key="0"
+  />
+  <PreupgradeReportEntry
+    entry={
+      Object {
+        "severity": "medium",
+        "title": "I am broken too",
+      }
+    }
+    key="1"
+  />
+  <PreupgradeReportEntry
+    entry={
+      Object {
+        "severity": "high",
+        "title": "Octocat is not happy",
+      }
+    }
+    key="2"
+  />
+  <PreupgradeReportEntry
+    entry={
+      Object {
+        "severity": "low",
+        "title": "Not enough credits",
+      }
+    }
+    key="3"
+  />
+</ListView>
+`;
