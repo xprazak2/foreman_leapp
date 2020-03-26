@@ -17,7 +17,7 @@ const reducer = (state = initialState, action) => {
   console.log(payload);
   switch (action.type) {
     case PREUPGRADE_REPORTS_REQUEST:
-      return state.set('loadingPreupgradeReport', true);
+      return state.set('loadingPreupgradeReports', true);
     case PREUPGRADE_REPORTS_SUCCESS:
       return state.merge({
         loadingPreupgradeReports: false,

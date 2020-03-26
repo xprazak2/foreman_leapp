@@ -15,6 +15,7 @@ import {
 const WrappedPreupgradeReports = props => {
   const loading = useSelector(state => selectLoadingPreupgradeReports(state));
   const preupgradeReports = useSelector(state => selectPreupgradeReports(state));
+  console.log(preupgradeReports);
   const error = useSelector(state => selectError(state));
 
   const dispatch = useDispatch();

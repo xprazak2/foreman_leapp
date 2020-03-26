@@ -1,10 +1,24 @@
 import React from 'react';
+import MessageBox from 'foremanReact/components/common/MessageBox';
 
-const PreupgradeReport = props => {
+import PreupgradeReportsList from '../PreupgradeReportsList';
+
+
+const PreupgradeReports = props => {
   console.log(props);
-  return (
-    <div> preupgrade!</div>
+  if (props.error) {
+    return (
+      <MessageBox
+        key="preupgrade-reports-error"
+        icontype="error-circle-o"
+        msg={__(`Could not receive data: ${error}`)}
+      />
     )
+  }
+
+  return (
+    <PreupgradeReportsList preupgradeReports={props.preupgradeReports} />
+  )
 }
 
-export default PreupgradeReport;
+export default PreupgradeReports;
