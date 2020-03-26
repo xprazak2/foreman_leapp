@@ -7,8 +7,6 @@ import {
   PREUPGRADE_REPORTS_FAILURE,
 } from '../../consts';
 
-import { initialState } from './PreupgradeReportsReducer';
-
 export const getPreupgradeReports = url => async dispatch => {
   dispatch({ type: PREUPGRADE_REPORTS_REQUEST });
 

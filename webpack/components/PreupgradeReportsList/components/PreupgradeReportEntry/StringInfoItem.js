@@ -1,6 +1,7 @@
 import React from 'react';
 import EllipsisWithTooltip from 'react-ellipsis-with-tooltip';
 import PropTypes from 'prop-types';
+import { translate as __ } from 'foremanReact/common/I18n';
 
 import InfoItem from './InfoItem';
 import { itemIteratorId } from './helpers';
@@ -14,9 +15,7 @@ const StringInfoItem = ({
   elipsed,
 }) => {
   const inner = (
-    <span>
-      {translate ? __(mapAttr(entry, attr)) : mapAttr(entry, attr)}
-    </span>
+    <span>{translate ? __(mapAttr(entry, attr)) : mapAttr(entry, attr)}</span>
   );
   const innerContent = elipsed ? (
     <EllipsisWithTooltip placement="top">{inner}</EllipsisWithTooltip>

@@ -24,9 +24,6 @@ module ForemanLeapp
         # add dashboard widget
         widget 'foreman_leapp_widget', name: N_('Foreman plugin template widget'), sizex: 4, sizey: 1
 
-        # make sure is available to the foreman
-        register_global_js_file 'fills'
-
         extend_page("job_invocations/show") do |context|
           context.add_pagelet :main_tabs,
             :name => _("LEAPP"),

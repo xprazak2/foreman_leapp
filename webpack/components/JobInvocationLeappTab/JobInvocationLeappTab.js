@@ -1,10 +1,6 @@
 import React from 'react';
 import PreupgradeReports from '../PreupgradeReports';
 
-const JobInvocationLeappTab = props => {
-  return (
-    <PreupgradeReports {...props}/>
-  )
-}
+const JobInvocationLeappTab = props => <PreupgradeReports {...props} />;
 
 export default JobInvocationLeappTab;
