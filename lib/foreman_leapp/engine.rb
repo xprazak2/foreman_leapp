@@ -25,6 +25,14 @@ module ForemanLeapp
 
         # add dashboard widget
         widget 'foreman_leapp_widget', name: N_('Foreman plugin template widget'), sizex: 4, sizey: 1
+
+        extend_page "job_invocations/show" do |cx|
+          cx.add_pagelet :main_tabs,
+                         partial: "job_invocations/leapp_preupgrade_report",
+                         name: _('Leapp preupgrade report'),
+                         id: 'leapp_preupgrade_report',
+                         onlyif: Proc.new { |subject| RemoteExecutionFeature.find_by(job_template_id: subject.template_invocations[0]&.template_id)&.label == 'leapp_preupgrade' }
+        end
       end
     end
 
@@ -33,6 +41,7 @@ module ForemanLeapp
       begin
         Host::Managed.include ForemanLeapp::HostExtensions
         HostsHelper.prepend ForemanLeapp::HostsHelperExtensions
+        Host::JobInvocation.include ForemanLeapp::JobInvocationExtensions
       rescue StandardError => e
         Rails.logger.warn "ForemanLeapp: skipping engine hook (#{e})"
       end

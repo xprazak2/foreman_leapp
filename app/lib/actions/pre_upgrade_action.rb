@@ -8,14 +8,15 @@ module Actions
       def plan(job_invocation, host, *args)
         return unless job_invocation.job_category == ::ForemanLeapp::JOB_CATEGORY
 
-        plan_self(host_id: host.id)
+        plan_self(host_id: host.id, job_invocation_id: job_invocation.id)
       end
 
       def finalize(*args)
         host = Host.find(input[:host_id])
+        job_invocation = JobInvocation.find(input[:job_invocation_id])
         leapp_report = format_output(task.main_action.continuous_output.humanize)
 
-        PreupgradeReport.create_report(host, leapp_report)
+        PreupgradeReport.create_report(host, leapp_report, job_invocation)
       end
 
       private
