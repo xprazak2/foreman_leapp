@@ -3,21 +3,17 @@
 class PreupgradeReport < ::Report
   has_many :preupgrade_report_entries, dependent: :destroy
 
-  def self.create_report(host, date, status, data)
-    report = PreupgradeReport.create(:host => host,
-                                     :reported_at => date,
-                                     :status => status)
-    data[:entries]&.each do |entry|
-      data = entry.slice(:title, :actor, :summary, :audience, :severity)
-                  .merge(:preupgrade_report => report,
-                         :hostname => host.hostname,
-                         :tags => entry[:tags].to_json,
-                         :detail => entry[:detail].to_json,
-                         :leapp_run_id => data[:leapp_run_id])
-      data.permit!
-      PreupgradeReportEntry.create! data
+  def self.create_report(host, data)
+    report = PreupgradeReport.create(host: host, status: 0, reported_at: DateTime.now.utc)
+    entries = []
+
+    data['entries']&.each do |entry|
+      entries << entry.except('timeStamp', 'id')
+                      .merge(preupgrade_report: report,
+                             hostname: host.hostname,
+                             leapp_run_id: data['leapp_run_id'])
     end
-    report.save!
-    report
+
+    PreupgradeReportEntry.create!(entries)
   end
 end
