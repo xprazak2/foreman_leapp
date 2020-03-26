@@ -27,7 +27,7 @@ module Api
       end
 
       def index
-        render :json => [PreupgradeReport.all.map { |report| full_report(report) }]
+        render :json => PreupgradeReport.all.map { |report| full_report(report) }
       end
 
       def show_last_report

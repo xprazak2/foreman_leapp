@@ -14,6 +14,7 @@ export const initialState = Immutable({
 
 const reducer = (state = initialState, action) => {
   const { payload } = action;
+  console.log(action)
   console.log(payload);
   switch (action.type) {
     case PREUPGRADE_REPORTS_REQUEST:

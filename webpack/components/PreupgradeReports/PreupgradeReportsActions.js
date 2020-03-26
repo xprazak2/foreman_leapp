@@ -16,9 +16,7 @@ export const getPreupgradeReports = url => async dispatch => {
     const { data } = await api.get(url);
     return dispatch({
       type: PREUPGRADE_REPORTS_SUCCESS,
-      payload: {
-        ...deepPropsToCamelCase(data),
-      },
+      payload: deepPropsToCamelCase(data),
     });
   } catch (error) {
     return dispatch(errorHandler(PREUPGRADE_REPORTS_FAILURE, error));

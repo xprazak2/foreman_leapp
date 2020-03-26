@@ -7,7 +7,7 @@ export const itemIteratorId = (entry, ...rest) =>
   `${entry.id}-${entry.preupgradeReportId}-${rest.join('-')}`
 
 export const additionalInfo = entry => {
-  infoAttrs = ['title', 'severity'];
+  const infoAttrs = ['title', 'severity'];
 
   return infoAttrs.map(attr => {
     const key = itemIteratorId(entry, attr);
