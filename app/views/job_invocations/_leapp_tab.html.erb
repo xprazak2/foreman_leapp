@@ -5,4 +5,4 @@
   <%= webpacked_plugins_css_for :foreman_leapp %>
 <% end %>
 
-<%= react_component('JobInvocationLeappTab', { :job_invocation_id => @job_invocation.id })%>
+<%= react_component('JobInvocationLeappTab', { :job_invocation_id => @job_invocation.id, :url => api_preupgrade_reports_path })%>

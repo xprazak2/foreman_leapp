@@ -1,11 +1,13 @@
 import React from 'react';
-import { LeappTest } from 'leapp-report-ui/dist/leapp-report-ui';
+import PreupgradeReports from '../PreupgradeReports';
+// import { LeappTest } from 'leapp-report-ui/dist/leapp-report-ui';
 
-console.log(LeappTest);
+// console.log(LeappTest);
 
 const JobInvocationLeappTab = props => {
   return (
-    <LeappTest />
+    <PreupgradeReports {...props}/>
+    // <LeappTest />
   )
 }
 
