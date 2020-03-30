@@ -24,6 +24,8 @@ module ForemanLeapp
       Foreman::Plugin.register :foreman_leapp do
         requires_foreman '>= 1.16'
 
+        extend_template_helpers ForemanLeapp::TemplateHelper
+
         # add dashboard widget
         widget 'foreman_leapp_widget', name: N_('Foreman plugin template widget'), sizex: 4, sizey: 1
 
