@@ -3,7 +3,7 @@ import MessageBox from 'foremanReact/components/common/MessageBox';
 import PropTypes from 'prop-types';
 import { Button, Row } from 'patternfly-react';
 
-// import { uniq } from 'lodash';
+import { deepPropsToSnakeCase } from 'foremanReact/common/helpers';
 
 import { translate as __ } from 'foremanReact/common/I18n';
 
@@ -29,9 +29,40 @@ const PreupgradeReports = ({ preupgradeReports, loading, error, onFixEntries }) 
 
   const onFixAll = (reports) => {
     console.log(reports);
-    const hostIds = reports.map(report => report.hostId);
-    const flattEntries = flattenEntries(reports);
-    console.log(flattEntries);
+
+    const entryFixable = entry => {
+      return entry.detail && entry.detail.remediations && entry.detail.remediations.some(remediation => remediation.type === 'command');
+    };
+
+    const res = reports.reduce((memo, report) => {
+      report.entries.map(entry => {
+        if (entryFixable(entry)) {
+          memo.entryIds = [...memo.entryIds, entry.id];
+
+          if (!memo.hostIds.includes(report.hostId)) {
+            memo.hostIds = [...memo.hostIds, report.hostId];
+          }
+        }
+      });
+      return memo;
+    }, { hostIds: [], entryIds: [] });
+
+    const invocationFactory = ({ hostIds, entryIds }) => {
+      return deepPropsToSnakeCase({
+        jobInvocation: {
+          hostIds,
+          feature: 'leapp_remediation_plan',
+          inputs: {
+            remediationIds: entryIds,
+          },
+        },
+      });
+    };
+
+    onFixEntries(invocationFactory(res)).then((response) => {
+      console.log('redirect!')
+      // window.location.pathname = `/job_invocations/${response.id}`;
+    });
   }
 
   return (

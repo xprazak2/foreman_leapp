@@ -24,14 +24,15 @@ export const getPreupgradeReports = url => async dispatch => {
   }
 };
 
-export const postFixEntries = (url, data) => async dispatch => {
+export const postFixEntries = (url, postData) => async dispatch => {
   dispatch({ type: PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_REQUEST });
 
   try {
-    const { data } = await api.post(url, data);
+    const { data } = await api.post(url, postData);
+    console.log(data);
     return dispatch({
       type: PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_SUCCESS,
-      payload: { succ: true },
+      payload: { ...data },
     });
   } catch (error) {
     // error handling!!

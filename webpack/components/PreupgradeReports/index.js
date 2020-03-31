@@ -10,7 +10,7 @@ import {
   selectError,
 } from './PreupgradeReportsSelectors';
 
-import { getPreupgradeReports, postFixAll } from './PreupgradeReportsActions';
+import { getPreupgradeReports, postFixEntries } from './PreupgradeReportsActions';
 
 const WrappedPreupgradeReports = ({ url, jobInvocationsUrl }) => {
   const loading = useSelector(state => selectLoadingPreupgradeReports(state));

@@ -8,5 +8,5 @@ node :tags do |entry|
 end
 
 node :detail do |entry|
-  JSON.parse(entry.detail)
+  JSON.parse(entry.detail) if entry.detail
 end

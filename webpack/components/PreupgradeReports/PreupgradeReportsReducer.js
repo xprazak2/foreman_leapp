@@ -15,6 +15,7 @@ export const initialState = Immutable({
   error: {},
   fixAllWorking: false,
   fixAllError: {},
+  remediationInvocation: {},
 });
 
 const reducer = (state = initialState, action) => {
@@ -35,7 +36,10 @@ const reducer = (state = initialState, action) => {
     case PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_REQUEST:
       return state.set('fixAllWorking', true);
     case PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_SUCCESS:
-      return state.set('fixAllWorking', false);
+      return state.merge({
+        fixAllWorking: false,
+        remediationInvocation: payload,
+      });
     case PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_FAILURE:
       return state.merge({
         fixAllWorking: false,
