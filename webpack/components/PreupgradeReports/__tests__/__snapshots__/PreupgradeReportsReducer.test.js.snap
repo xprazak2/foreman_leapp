@@ -35,10 +35,12 @@ Object {
     Object {
       "entries": Array [
         Object {
+          "id": 42,
           "severity": "Too severe to talk about",
           "title": "Fix me!",
         },
         Object {
+          "id": 43,
           "severity": "medium",
           "title": "I am broken too",
         },
@@ -48,10 +50,12 @@ Object {
     Object {
       "entries": Array [
         Object {
+          "id": 44,
           "severity": "high",
           "title": "Octocat is not happy",
         },
         Object {
+          "id": 45,
           "severity": "low",
           "title": "Not enough credits",
         },
