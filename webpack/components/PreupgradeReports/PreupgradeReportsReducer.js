@@ -25,7 +25,7 @@ const reducer = (state = initialState, action) => {
     case PREUPGRADE_REPORTS_SUCCESS:
       return state.merge({
         loadingPreupgradeReports: false,
-        preupgradeReports: payload,
+        preupgradeReports: payload.results,
       });
     case PREUPGRADE_REPORTS_FAILURE:
       return state.merge({
