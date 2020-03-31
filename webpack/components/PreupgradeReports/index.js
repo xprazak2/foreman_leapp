@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import PreupgradeReports from './PreupgradeReports';
 
+import getCsrfToken from '../../csrf';
+
 import {
   selectPreupgradeReports,
   selectLoadingPreupgradeReports,
@@ -12,7 +14,7 @@ import {
 
 import { getPreupgradeReports } from './PreupgradeReportsActions';
 
-const WrappedPreupgradeReports = ({ url }) => {
+const WrappedPreupgradeReports = ({ url, newJobInvocationUrl }) => {
   const loading = useSelector(state => selectLoadingPreupgradeReports(state));
   const preupgradeReports = useSelector(state =>
     selectPreupgradeReports(state)
@@ -23,19 +25,22 @@ const WrappedPreupgradeReports = ({ url }) => {
 
   useEffect(() => {
     dispatch(getPreupgradeReports(url));
-  }, [url]);
+  }, [url, dispatch]);
 
   return (
     <PreupgradeReports
       preupgradeReports={preupgradeReports}
       error={error}
       loading={loading}
+      csrfToken={getCsrfToken()}
+      newJobInvocationUrl={newJobInvocationUrl}
     />
   );
 };
 
 WrappedPreupgradeReports.propTypes = {
   url: PropTypes.string.isRequired,
+  newJobInvocationUrl: PropTypes.string.isRequired,
 };
 
 export default WrappedPreupgradeReports;
