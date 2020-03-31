@@ -7,7 +7,6 @@ import { additionalInfo } from './helpers';
 const PreupgradeReportEntry = ({ entry }) => (
   <ListView.Item
     key={entry.id}
-    className="listViewItem--listItemVariants"
     stacked
     additionalInfo={additionalInfo(entry)}
   />

@@ -3,8 +3,11 @@
 exports[`PreupgradeReportsReducer should return initial state 1`] = `
 Object {
   "error": Object {},
+  "fixAllError": Object {},
+  "fixAllWorking": false,
   "loadingPreupgradeReports": false,
   "preupgradeReports": Array [],
+  "remediationInvocation": Object {},
 }
 `;
 
@@ -14,31 +17,41 @@ Object {
     "errorMsg": "This is error",
     "statusText": "Not good",
   },
+  "fixAllError": Object {},
+  "fixAllWorking": false,
   "loadingPreupgradeReports": false,
   "preupgradeReports": Array [],
+  "remediationInvocation": Object {},
 }
 `;
 
 exports[`PreupgradeReportsReducer should start loading reports on request 1`] = `
 Object {
   "error": Object {},
+  "fixAllError": Object {},
+  "fixAllWorking": false,
   "loadingPreupgradeReports": true,
   "preupgradeReports": Array [],
+  "remediationInvocation": Object {},
 }
 `;
 
 exports[`PreupgradeReportsReducer should stop loading on reports success 1`] = `
 Object {
   "error": Object {},
+  "fixAllError": Object {},
+  "fixAllWorking": false,
   "loadingPreupgradeReports": false,
   "preupgradeReports": Array [
     Object {
       "entries": Array [
         Object {
+          "id": 42,
           "severity": "Too severe to talk about",
           "title": "Fix me!",
         },
         Object {
+          "id": 43,
           "severity": "medium",
           "title": "I am broken too",
         },
@@ -48,10 +61,12 @@ Object {
     Object {
       "entries": Array [
         Object {
+          "id": 44,
           "severity": "high",
           "title": "Octocat is not happy",
         },
         Object {
+          "id": 45,
           "severity": "low",
           "title": "Not enough credits",
         },
@@ -59,5 +74,6 @@ Object {
       "hostId": 6,
     },
   ],
+  "remediationInvocation": Object {},
 }
 `;

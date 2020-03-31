@@ -4,12 +4,18 @@ import {
   PREUPGRADE_REPORTS_REQUEST,
   PREUPGRADE_REPORTS_SUCCESS,
   PREUPGRADE_REPORTS_FAILURE,
+  PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_REQUEST,
+  PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_SUCCESS,
+  PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_FAILURE,
 } from '../../consts';
 
 export const initialState = Immutable({
   loadingPreupgradeReports: false,
   preupgradeReports: [],
   error: {},
+  fixAllWorking: false,
+  fixAllError: {},
+  remediationInvocation: {},
 });
 
 const reducer = (state = initialState, action) => {
@@ -26,6 +32,18 @@ const reducer = (state = initialState, action) => {
       return state.merge({
         error: payload.error,
         loadingPreupgradeReports: false,
+      });
+    case PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_REQUEST:
+      return state.set('fixAllWorking', true);
+    case PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_SUCCESS:
+      return state.merge({
+        fixAllWorking: false,
+        remediationInvocation: payload,
+      });
+    case PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_FAILURE:
+      return state.merge({
+        fixAllWorking: false,
+        fixAllError: payload.error ? payload.error : {},
       });
     default:
       return state;
