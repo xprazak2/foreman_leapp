@@ -10,9 +10,9 @@ import {
   selectError,
 } from './PreupgradeReportsSelectors';
 
-import { getPreupgradeReports } from './PreupgradeReportsActions';
+import { getPreupgradeReports, postFixAll } from './PreupgradeReportsActions';
 
-const WrappedPreupgradeReports = ({ url }) => {
+const WrappedPreupgradeReports = ({ url, jobInvocationsUrl }) => {
   const loading = useSelector(state => selectLoadingPreupgradeReports(state));
   const preupgradeReports = useSelector(state =>
     selectPreupgradeReports(state)
@@ -25,11 +25,14 @@ const WrappedPreupgradeReports = ({ url }) => {
     dispatch(getPreupgradeReports(url));
   }, [url]);
 
+  const onFixEntries = (postData) => dispatch(postFixEntries(jobInvocationsUrl, postData));
+
   return (
     <PreupgradeReports
       preupgradeReports={preupgradeReports}
       error={error}
       loading={loading}
+      onFixEntries={onFixEntries}
     />
   );
 };
