@@ -16,34 +16,86 @@ exports[`PreupgradeReports should render when loaded 1`] = `
   size="lg"
   timeout={300}
 >
+  <Row
+    bsClass="row"
+    componentClass="div"
+  >
+    <div
+      className="title-filter col-md-4"
+    >
+       
+    </div>
+    <div
+      className="col-md-8"
+      id="title_action"
+    >
+      <div
+        className="btn-toolbar pull-right"
+      >
+        <FixAllButton
+          csrfToken="xyz"
+          disabled={true}
+          postUrl="/job_invocations/new"
+          preupgradeReports={
+            Array [
+              Object {
+                "entries": Array [
+                  Object {
+                    "id": 42,
+                    "severity": "Too severe to talk about",
+                    "title": "Fix me!",
+                  },
+                  Object {
+                    "id": 43,
+                    "severity": "medium",
+                    "title": "I am broken too",
+                  },
+                ],
+                "hostId": 5,
+              },
+              Object {
+                "entries": Array [
+                  Object {
+                    "id": 44,
+                    "severity": "high",
+                    "title": "Octocat is not happy",
+                  },
+                  Object {
+                    "id": 45,
+                    "severity": "low",
+                    "title": "Not enough credits",
+                  },
+                ],
+                "hostId": 6,
+              },
+            ]
+          }
+        />
+      </div>
+    </div>
+  </Row>
   <PreupgradeReportsList
-    preupgradeReports={
+    allEntries={
       Array [
         Object {
-          "entries": Array [
-            Object {
-              "severity": "Too severe to talk about",
-              "title": "Fix me!",
-            },
-            Object {
-              "severity": "medium",
-              "title": "I am broken too",
-            },
-          ],
-          "hostId": 5,
+          "id": 42,
+          "severity": "Too severe to talk about",
+          "title": "Fix me!",
         },
         Object {
-          "entries": Array [
-            Object {
-              "severity": "high",
-              "title": "Octocat is not happy",
-            },
-            Object {
-              "severity": "low",
-              "title": "Not enough credits",
-            },
-          ],
-          "hostId": 6,
+          "id": 43,
+          "severity": "medium",
+          "title": "I am broken too",
+        },
+        Object {
+          "id": 44,
+          "severity": "high",
+          "title": "Octocat is not happy",
+        },
+        Object {
+          "id": 45,
+          "severity": "low",
+          "title": "Not enough credits",
         },
       ]
     }
@@ -59,8 +111,33 @@ exports[`PreupgradeReports should render when loading 1`] = `
   size="lg"
   timeout={300}
 >
+  <Row
+    bsClass="row"
+    componentClass="div"
+  >
+    <div
+      className="title-filter col-md-4"
+    >
+       
+    </div>
+    <div
+      className="col-md-8"
+      id="title_action"
+    >
+      <div
+        className="btn-toolbar pull-right"
+      >
+        <FixAllButton
+          csrfToken="xyz"
+          disabled={true}
+          postUrl="/job_invocations/new"
+          preupgradeReports={Array []}
+        />
+      </div>
+    </div>
+  </Row>
   <PreupgradeReportsList
-    preupgradeReports={Array []}
+    allEntries={Array []}
   />
 </LoadingState>
 `;
