@@ -1,3 +1,4 @@
+module ForemanLeapp
   module TemplateHelper
     def build_remediation_plan(remediation_ids, host)
       entries = PreupgradeReportEntry.where(id: remediation_ids, host: host)
@@ -15,3 +16,4 @@
       result
     end
   end
+end
