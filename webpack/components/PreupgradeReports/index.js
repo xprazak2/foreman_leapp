@@ -8,34 +8,48 @@ import {
   selectPreupgradeReports,
   selectLoadingPreupgradeReports,
   selectError,
+  selectFixAllWorking,
+  selectFixAllError,
 } from './PreupgradeReportsSelectors';
 
-import { getPreupgradeReports } from './PreupgradeReportsActions';
+import {
+  getPreupgradeReports,
+  postFixEntries,
+} from './PreupgradeReportsActions';
 
-const WrappedPreupgradeReports = ({ url }) => {
+const WrappedPreupgradeReports = ({ url, jobInvocationsUrl }) => {
   const loading = useSelector(state => selectLoadingPreupgradeReports(state));
   const preupgradeReports = useSelector(state =>
     selectPreupgradeReports(state)
   );
   const error = useSelector(state => selectError(state));
+  const fixAllWorking = useSelector(state => selectFixAllWorking(state));
+  const fixAllError = useSelector(state => selectFixAllError(state));
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getPreupgradeReports(url));
-  }, [url]);
+  }, [url, dispatch]);
+
+  const onFixEntries = postData =>
+    dispatch(postFixEntries(jobInvocationsUrl, postData));
 
   return (
     <PreupgradeReports
       preupgradeReports={preupgradeReports}
       error={error}
       loading={loading}
+      onFixEntries={onFixEntries}
+      fixAllWorking={fixAllWorking}
+      fixAllError={fixAllError}
     />
   );
 };
 
 WrappedPreupgradeReports.propTypes = {
   url: PropTypes.string.isRequired,
+  jobInvocationsUrl: PropTypes.string.isRequired,
 };
 
 export default WrappedPreupgradeReports;

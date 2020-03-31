@@ -6,5 +6,6 @@
 <% end %>
 
 <%= react_component('PreupgradeReports', {
-  :url => preupgrade_reports_path(:search => "job_invocation_id = #{@job_invocation.id}")
+  :url => preupgrade_reports_path(:search => "job_invocation_id = #{@job_invocation.id}"),
+  :jobInvocationsUrl => api_job_invocations_path
 }) %>

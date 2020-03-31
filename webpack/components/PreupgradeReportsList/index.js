@@ -1,26 +1,21 @@
 import React from 'react';
 import { ListView } from 'patternfly-react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import PreupgradeReportEntry from './components/PreupgradeReportEntry';
 
-const PreupgradeReportsList = ({ preupgradeReports }) => {
-  const flatEntries = preupgradeReports.reduce(
-    (memo, report) => [...memo, ...report.entries],
-    []
-  );
-
-  return (
-    <ListView>
-      {flatEntries.map((entry, idx) => (
-        <PreupgradeReportEntry entry={entry} key={idx} />
-      ))}
-    </ListView>
-  );
-};
+const PreupgradeReportsList = ({ allEntries, fixAllWorking }) => (
+  <ListView className={classNames({ working: fixAllWorking })}>
+    {allEntries.map((entry, idx) => (
+      <PreupgradeReportEntry entry={entry} key={idx} />
+    ))}
+  </ListView>
+);
 
 PreupgradeReportsList.propTypes = {
-  preupgradeReports: PropTypes.array.isRequired,
+  allEntries: PropTypes.array.isRequired,
+  fixAllWorking: PropTypes.bool.isRequired,
 };
 
 export default PreupgradeReportsList;
