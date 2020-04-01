@@ -1,0 +1,15 @@
+@import '~@theforeman/vendor/scss/variables';
+
+#leapp_preupgrade_report {
+  .list-view-pf.working {
+    .list-group-item.list-view-pf-stacked {
+      color: $color-pf-black-400;
+
+      &:hover{
+        background-color: $color-pf-white;
+        border-left-color: $color-pf-white;
+        border-right-color: $color-pf-white;
+      }
+    }
+  }
+}

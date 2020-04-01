@@ -8,6 +8,8 @@ import {
   selectPreupgradeReports,
   selectLoadingPreupgradeReports,
   selectError,
+  selectFixAllWorking,
+  selectFixAllError,
 } from './PreupgradeReportsSelectors';
 
 import { getPreupgradeReports, postFixEntries } from './PreupgradeReportsActions';
@@ -18,6 +20,8 @@ const WrappedPreupgradeReports = ({ url, jobInvocationsUrl }) => {
     selectPreupgradeReports(state)
   );
   const error = useSelector(state => selectError(state));
+  const fixAllWorking = useSelector(state => selectFixAllWorking(state));
+  const fixAllError = useSelector(state => selectFixAllError(state));
 
   const dispatch = useDispatch();
 
@@ -33,6 +37,8 @@ const WrappedPreupgradeReports = ({ url, jobInvocationsUrl }) => {
       error={error}
       loading={loading}
       onFixEntries={onFixEntries}
+      fixAllWorking={fixAllWorking}
+      fixAllError={fixAllError}
     />
   );
 };

@@ -43,7 +43,7 @@ const reducer = (state = initialState, action) => {
     case PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_FAILURE:
       return state.merge({
         fixAllWorking: false,
-        fixAllError: { ...payload }, // what is payload???!
+        fixAllError: payload.error ? payload.error : {},
       });
     default:
       return state;

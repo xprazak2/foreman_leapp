@@ -35,8 +35,7 @@ export const postFixEntries = (url, postData) => async dispatch => {
       payload: { ...data },
     });
   } catch (error) {
-    // error handling!!
-    return dispatch({ type: PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_FAILURE, payload: { succ: false } });
+    return dispatch({ type: PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_FAILURE, payload: error.response.data });
   }
 }
 
