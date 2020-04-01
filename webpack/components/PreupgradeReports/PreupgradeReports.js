@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageBox from 'foremanReact/components/common/MessageBox';
+import { LoadingState } from 'patternfly-react';
 import PropTypes from 'prop-types';
 
 import PreupgradeReportsList from '../PreupgradeReportsList';
@@ -15,7 +16,11 @@ const PreupgradeReports = ({ preupgradeReports, loading, error }) => {
     );
   }
 
-  return <PreupgradeReportsList preupgradeReports={preupgradeReports} />;
+  return (
+    <LoadingState loading={loading}>
+      <PreupgradeReportsList preupgradeReports={preupgradeReports} />
+    </LoadingState>
+  );
 };
 
 PreupgradeReports.propTypes = {
