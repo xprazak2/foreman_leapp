@@ -7,7 +7,7 @@ module ForemanLeapp
       result = ""
 
       entries.each do |entry|
-        JSON.parse(entry)['remediations']&.each do |remediation|
+        entry['remediations']&.each do |remediation|
           next unless remediation['type'] == 'command'
           result << "#{remediation['context'].join(' ')}\n"
         end
