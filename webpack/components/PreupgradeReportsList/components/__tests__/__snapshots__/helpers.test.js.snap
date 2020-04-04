@@ -1,34 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PreupgradeReportList/helpers should return additional info 1`] = `
-Array [
-  <StringInfoItem
-    attr="title"
-    elipsed={false}
-    entry={
-      Object {
-        "id": 5,
-        "preupgradeReportId": 6,
-        "severity": "low",
-        "title": "This is title",
-      }
-    }
-    mapAttr={[Function]}
-    translate={false}
-  />,
-  <StringInfoItem
-    attr="severity"
-    elipsed={false}
-    entry={
-      Object {
-        "id": 5,
-        "preupgradeReportId": 6,
-        "severity": "low",
-        "title": "This is title",
-      }
-    }
-    mapAttr={[Function]}
-    translate={false}
-  />,
-]
-`;
+exports[`PreupgradeReportList/helpers should return tag info 1`] = `"#39a5dc"`;
