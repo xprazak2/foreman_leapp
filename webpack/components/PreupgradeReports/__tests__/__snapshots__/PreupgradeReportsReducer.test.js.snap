@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreupgradeReportsReducer should return initial state 1`] = `
+Object {
+  "error": Object {},
+  "loadingPreupgradeReports": false,
+  "preupgradeReports": Array [],
+}
+`;
+
+exports[`PreupgradeReportsReducer should show error on request failure 1`] = `
+Object {
+  "error": Object {
+    "errorMsg": "This is error",
+    "statusText": "Not good",
+  },
+  "loadingPreupgradeReports": false,
+  "preupgradeReports": Array [],
+}
+`;
+
+exports[`PreupgradeReportsReducer should start loading reports on request 1`] = `
+Object {
+  "error": Object {},
+  "loadingPreupgradeReports": true,
+  "preupgradeReports": Array [],
+}
+`;
+
+exports[`PreupgradeReportsReducer should stop loading on reports success 1`] = `
+Object {
+  "error": Object {},
+  "loadingPreupgradeReports": false,
+  "preupgradeReports": Array [
+    Object {
+      "entries": Array [
+        Object {
+          "severity": "Too severe to talk about",
+          "title": "Fix me!",
+        },
+        Object {
+          "severity": "medium",
+          "title": "I am broken too",
+        },
+      ],
+      "hostId": 5,
+    },
+    Object {
+      "entries": Array [
+        Object {
+          "severity": "high",
+          "title": "Octocat is not happy",
+        },
+        Object {
+          "severity": "low",
+          "title": "Not enough credits",
+        },
+      ],
+      "hostId": 6,
+    },
+  ],
+}
+`;

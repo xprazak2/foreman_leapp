@@ -1,1 +1,10 @@
-Leapp Preupgrade tab content.
+<% content_for(:javascripts) do %>
+  <%= webpacked_plugins_js_for :foreman_leapp %>
+<% end %>
+<% content_for(:stylesheets) do %>
+  <%= webpacked_plugins_css_for :foreman_leapp %>
+<% end %>
+
+<%= react_component('PreupgradeReports', {
+  :url => preupgrade_reports_path(:search => "job_invocation_id = #{@job_invocation.id}")
+}) %>

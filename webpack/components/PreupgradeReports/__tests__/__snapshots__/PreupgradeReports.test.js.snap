@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreupgradeReports should render error 1`] = `
+<MessageBox
+  icontype="error-circle-o"
+  key="preupgrade-reports-error"
+  msg="Could not retrieve data: Internal server error - Well, this is embarassing"
+/>
+`;
+
+exports[`PreupgradeReports should render when loaded 1`] = `
+<PreupgradeReportsList
+  preupgradeReports={
+    Array [
+      Object {
+        "entries": Array [
+          Object {
+            "severity": "Too severe to talk about",
+            "title": "Fix me!",
+          },
+          Object {
+            "severity": "medium",
+            "title": "I am broken too",
+          },
+        ],
+        "hostId": 5,
+      },
+      Object {
+        "entries": Array [
+          Object {
+            "severity": "high",
+            "title": "Octocat is not happy",
+          },
+          Object {
+            "severity": "low",
+            "title": "Not enough credits",
+          },
+        ],
+        "hostId": 6,
+      },
+    ]
+  }
+/>
+`;
+
+exports[`PreupgradeReports should render when loading 1`] = `
+<PreupgradeReportsList
+  preupgradeReports={Array []}
+/>
+`;
