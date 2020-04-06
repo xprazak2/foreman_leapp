@@ -3,20 +3,13 @@
 module ForemanLeapp
   module TemplateHelper
     def build_remediation_plan(remediation_ids, host)
-      entries = PreupgradeReportEntry.where(id: remediation_ids, host: host)
-                                     .where.not(detail: nil)
-                                     .pluck(:detail)
-      result = +''
-
-      entries.each do |entry|
-        entry['remediations']&.each do |remediation|
-          next unless remediation['type'] == 'command'
-
-          result << "#{remediation['context'].join(' ')}\n"
-        end
-      end
-
-      result
+      PreupgradeReportEntry.remediation_details(remediation_ids, host)
+                           .map { |e| e['remediations'] }
+                           .flatten
+                           .compact
+                           .select { |r| r['type'] == 'command' }
+                           .map { |r| "#{r['context'].join(' ')}\n" }
+                           .join
     end
   end
 end
