@@ -3,13 +3,18 @@
 module ForemanLeapp
   module RemoteExecutionHelperExtension
     def job_invocation_task_buttons(task)
-      return super unless @job_invocation.remote_execution_feature&.label == 'leapp_remediation_plan'
+      job_invocation = task.task_groups.find { |group| group.class == JobInvocationTaskGroup }.job_invocation
+      return super unless job_invocation.remote_execution_feature&.label == 'leapp_remediation_plan'
 
-      super.insert(2, link_to(_('Rerun preupgrade check'),
-                      new_job_invocation_path(host_ids: @resource_base.map(&:id), feature: 'leapp_preupgrade'),
-                      class: 'btn btn-default',
-                      title: _('Run Leapp Preupgrade check again'),
-                      method: :get))
+      path = new_job_invocation_path(host_ids: job_invocation.triggering.hosts.map(&:id),
+                                     feature: 'leapp_preupgrade')
+
+      super.insert(2,
+                   link_to(_('Rerun preupgrade check'),
+                           path,
+                           class: 'btn btn-default',
+                           title: _('Run Leapp Preupgrade check again'),
+                           method: :get))
     end
   end
 end
