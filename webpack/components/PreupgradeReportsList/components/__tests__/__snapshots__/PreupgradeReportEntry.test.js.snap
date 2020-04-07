@@ -45,7 +45,10 @@ exports[`PreupgradeReportEntry should render 1`] = `
   }
   checkboxInput={
     <input
+      disabled={true}
+      onChange={[Function]}
       type="checkbox"
+      value={false}
     />
   }
   compoundExpand={false}

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Button } from 'patternfly-react';
 import { translate as __ } from 'foremanReact/common/I18n';
 
-import { idsForInvocation } from '../PreupgradeReportsHelpers';
+import { idsForInvocationFromReports } from '../PreupgradeReportsHelpers';
 
 const UpgradeAllButton = ({ preupgradeReports, postUrl, csrfToken }) => {
-  const { hostIds } = idsForInvocation(preupgradeReports);
+  const { hostIds } = idsForInvocationFromReports(preupgradeReports);
 
   return (
     <form action={postUrl} method="post">
