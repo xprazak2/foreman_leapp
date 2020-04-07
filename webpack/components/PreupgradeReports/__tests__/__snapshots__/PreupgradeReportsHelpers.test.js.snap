@@ -21,6 +21,26 @@ exports[`PreupgradeReportsHelpers should detect no entry is fixable 1`] = `false
 
 exports[`PreupgradeReportsHelpers should detect non-empty object 1`] = `false`;
 
+exports[`PreupgradeReportsHelpers should return entries page 1`] = `
+Array [
+  Object {
+    "id": 45,
+    "severity": "low",
+    "title": "Not enough credits",
+  },
+  Object {
+    "id": 46,
+    "severity": "medium",
+    "title": "SELinux is turned off",
+  },
+  Object {
+    "id": 47,
+    "severity": "medium",
+    "title": "Root password is too short",
+  },
+]
+`;
+
 exports[`PreupgradeReportsHelpers should return flattened entrues 1`] = `
 Array [
   Object {
@@ -42,6 +62,21 @@ Array [
     "id": 45,
     "severity": "low",
     "title": "Not enough credits",
+  },
+  Object {
+    "id": 46,
+    "severity": "medium",
+    "title": "SELinux is turned off",
+  },
+  Object {
+    "id": 47,
+    "severity": "medium",
+    "title": "Root password is too short",
+  },
+  Object {
+    "id": 49,
+    "severity": "high",
+    "title": "No chocolate chip cookies in cookie jar",
   },
 ]
 `;

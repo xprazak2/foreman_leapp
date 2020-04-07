@@ -38,6 +38,21 @@ Array [
         "severity": "low",
         "title": "Not enough credits",
       },
+      Object {
+        "id": 46,
+        "severity": "medium",
+        "title": "SELinux is turned off",
+      },
+      Object {
+        "id": 47,
+        "severity": "medium",
+        "title": "Root password is too short",
+      },
+      Object {
+        "id": 49,
+        "severity": "high",
+        "title": "No chocolate chip cookies in cookie jar",
+      },
     ],
     "hostId": 6,
   },
