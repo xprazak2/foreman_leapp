@@ -11,6 +11,13 @@ export const preupgradeReports = [
     entries: [
       { title: 'Octocat is not happy', severity: 'high', id: 44 },
       { title: 'Not enough credits', severity: 'low', id: 45 },
+      { title: 'SELinux is turned off', severity: 'medium', id: 46 },
+      { title: 'Root password is too short', severity: 'medium', id: 47 },
+      {
+        title: 'No chocolate chip cookies in cookie jar',
+        severity: 'high',
+        id: 49,
+      },
     ],
   },
 ];

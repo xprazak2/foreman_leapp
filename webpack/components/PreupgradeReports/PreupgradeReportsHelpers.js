@@ -27,3 +27,9 @@ export const idsForInvocation = reports =>
     },
     { hostIds: [], entryIds: [] }
   );
+
+export const entriesPage = (entries, pagination) => {
+  const offset = (pagination.page - 1) * pagination.perPage;
+
+  return entries.slice(offset, offset + pagination.perPage);
+};

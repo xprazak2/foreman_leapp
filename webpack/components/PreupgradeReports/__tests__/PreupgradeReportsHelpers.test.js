@@ -11,6 +11,7 @@ import {
   entryFixable,
   anyEntriesFixable,
   idsForInvocation,
+  entriesPage,
 } from '../PreupgradeReportsHelpers';
 
 const fixtures = {
@@ -29,6 +30,8 @@ const fixtures = {
     anyEntriesFixable(reportsWithRemediations),
   'should collect ids for job invocation': () =>
     idsForInvocation(preupgradeReports),
+  'should return entries page': () =>
+    entriesPage(flattenEntries(preupgradeReports), { page: 2, perPage: 3 }),
 };
 
 describe('PreupgradeReportsHelpers', () =>

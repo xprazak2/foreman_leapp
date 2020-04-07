@@ -40,6 +40,25 @@ exports[`PreupgradeReportsList should render 1`] = `
     }
     key="3"
   />
+  <PaginationWrapper
+    dropdownButtonId="preupgrade-report-entries-pagination-dropdown"
+    itemCount={4}
+    onChange={[Function]}
+    pagination={
+      Object {
+        "page": 1,
+        "perPage": 20,
+        "perPageOptions": Array [
+          5,
+          10,
+          20,
+          30,
+          50,
+        ],
+      }
+    }
+    viewType="list"
+  />
 </ListView>
 `;
 
@@ -82,6 +101,25 @@ exports[`PreupgradeReportsList should render when working 1`] = `
       }
     }
     key="3"
+  />
+  <PaginationWrapper
+    dropdownButtonId="preupgrade-report-entries-pagination-dropdown"
+    itemCount={4}
+    onChange={[Function]}
+    pagination={
+      Object {
+        "page": 1,
+        "perPage": 20,
+        "perPageOptions": Array [
+          5,
+          10,
+          20,
+          30,
+          50,
+        ],
+      }
+    }
+    viewType="list"
   />
 </ListView>
 `;
