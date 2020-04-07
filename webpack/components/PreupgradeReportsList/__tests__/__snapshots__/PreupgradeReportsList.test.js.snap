@@ -11,7 +11,9 @@ exports[`PreupgradeReportsList should render 1`] = `
         "title": "Fix me!",
       }
     }
+    isEntrySelected={false}
     key="0"
+    toggleSelected={[Function]}
   />
   <PreupgradeReportEntry
     entry={
@@ -20,7 +22,9 @@ exports[`PreupgradeReportsList should render 1`] = `
         "title": "I am broken too",
       }
     }
+    isEntrySelected={false}
     key="1"
+    toggleSelected={[Function]}
   />
   <PreupgradeReportEntry
     entry={
@@ -29,7 +33,9 @@ exports[`PreupgradeReportsList should render 1`] = `
         "title": "Octocat is not happy",
       }
     }
+    isEntrySelected={false}
     key="2"
+    toggleSelected={[Function]}
   />
   <PreupgradeReportEntry
     entry={
@@ -38,7 +44,9 @@ exports[`PreupgradeReportsList should render 1`] = `
         "title": "Not enough credits",
       }
     }
+    isEntrySelected={false}
     key="3"
+    toggleSelected={[Function]}
   />
   <PaginationWrapper
     dropdownButtonId="preupgrade-report-entries-pagination-dropdown"
@@ -73,7 +81,9 @@ exports[`PreupgradeReportsList should render when working 1`] = `
         "title": "Fix me!",
       }
     }
+    isEntrySelected={false}
     key="0"
+    toggleSelected={[Function]}
   />
   <PreupgradeReportEntry
     entry={
@@ -82,7 +92,9 @@ exports[`PreupgradeReportsList should render when working 1`] = `
         "title": "I am broken too",
       }
     }
+    isEntrySelected={false}
     key="1"
+    toggleSelected={[Function]}
   />
   <PreupgradeReportEntry
     entry={
@@ -91,7 +103,9 @@ exports[`PreupgradeReportsList should render when working 1`] = `
         "title": "Octocat is not happy",
       }
     }
+    isEntrySelected={false}
     key="2"
+    toggleSelected={[Function]}
   />
   <PreupgradeReportEntry
     entry={
@@ -100,7 +114,9 @@ exports[`PreupgradeReportsList should render when working 1`] = `
         "title": "Not enough credits",
       }
     }
+    isEntrySelected={false}
     key="3"
+    toggleSelected={[Function]}
   />
   <PaginationWrapper
     dropdownButtonId="preupgrade-report-entries-pagination-dropdown"

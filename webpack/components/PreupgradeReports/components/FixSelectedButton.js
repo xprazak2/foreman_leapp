@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import { Button } from 'patternfly-react';
 import { translate as __ } from 'foremanReact/common/I18n';
 
-import { idsForInvocation } from '../PreupgradeReportsHelpers';
-
-const FixAllButton = ({ preupgradeReports, postUrl, disabled, csrfToken }) => {
-  const { hostIds, entryIds } = idsForInvocation(preupgradeReports);
+const FixSelectedButton = ({ ids, postUrl, disabled, csrfToken }) => {
+  const { hostIds, entryIds } = ids;
 
   return (
     <form action={postUrl} method="post">
       <Button type="submit" disabled={disabled}>
-        {__('Fix All')}
+        {__('Fix Selected')}
       </Button>
       <input type="hidden" name="authenticity_token" value={csrfToken} />
       <input type="hidden" name="feature" value="leapp_remediation_plan" />
@@ -27,11 +25,11 @@ const FixAllButton = ({ preupgradeReports, postUrl, disabled, csrfToken }) => {
   );
 };
 
-FixAllButton.propTypes = {
-  preupgradeReports: PropTypes.array.isRequired,
+FixSelectedButton.propTypes = {
+  ids: PropTypes.object.isRequired,
   postUrl: PropTypes.string.isRequired,
   disabled: PropTypes.bool.isRequired,
   csrfToken: PropTypes.string.isRequired,
 };
 
-export default FixAllButton;
+export default FixSelectedButton;
