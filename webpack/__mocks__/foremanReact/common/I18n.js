@@ -1,1 +1,1 @@
-export const translate = () => jest.fn();
+export const translate = val => val;

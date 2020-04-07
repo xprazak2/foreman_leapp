@@ -12,6 +12,7 @@ import {
   anyEntriesFixable,
   idsForInvocation,
   entriesPage,
+  filterEntries,
 } from '../PreupgradeReportsHelpers';
 
 const fixtures = {
@@ -32,6 +33,14 @@ const fixtures = {
     idsForInvocation(preupgradeReports),
   'should return entries page': () =>
     entriesPage(flattenEntries(preupgradeReports), { page: 2, perPage: 3 }),
+  'should filter entries by title': () =>
+    filterEntries('title', 'broken', flattenEntries(preupgradeReports)),
+  'should filter entries by severity': () =>
+    filterEntries('severity', 'medium', flattenEntries(preupgradeReports)),
+  'should filter entries by host': () =>
+    filterEntries('hostname', 'foo', flattenEntries(preupgradeReports)),
+  'should filter entries by remediations': () =>
+    filterEntries('fix', 'command', flattenEntries(reportsWithRemediations)),
 };
 
 describe('PreupgradeReportsHelpers', () =>

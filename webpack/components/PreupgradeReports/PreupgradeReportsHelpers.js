@@ -1,10 +1,12 @@
 export const flattenEntries = reports =>
   reports.reduce((memo, report) => [...memo, ...report.entries], []);
 
-export const entryFixable = entry =>
+const entryWithFixKind = kind => entry =>
   entry.detail &&
   entry.detail.remediations &&
-  entry.detail.remediations.some(remediation => remediation.type === 'command');
+  entry.detail.remediations.some(remediation => remediation.type === kind);
+
+export const entryFixable = entryWithFixKind('command');
 
 export const isEmpty = obj => Object.keys(obj).length === 0;
 
@@ -32,4 +34,18 @@ export const entriesPage = (entries, pagination) => {
   const offset = (pagination.page - 1) * pagination.perPage;
 
   return entries.slice(offset, offset + pagination.perPage);
+};
+
+export const filterEntries = (attribute, value, entries) => {
+  if (!value) {
+    return entries;
+  }
+
+  if (attribute === 'fix') {
+    return entries.filter(entryWithFixKind(value));
+  }
+
+  return entries.filter(entry =>
+    entry[attribute].toLowerCase().includes(value.toLowerCase())
+  );
 };
