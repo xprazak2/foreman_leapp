@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MessageBox from 'foremanReact/components/common/MessageBox';
 import PropTypes from 'prop-types';
 import { Button, Row, Spinner } from 'patternfly-react';
@@ -15,7 +15,8 @@ import {
   flattenEntries,
   isEmpty,
   anyEntriesFixable,
-  idsForInvocation,
+  idsForInvocationFromReports,
+  idsForInvocationFromEntries,
 } from './PreupgradeReportsHelpers';
 
 import { PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_SUCCESS } from '../../consts';
@@ -38,9 +39,33 @@ const PreupgradeReports = ({
     );
   }
 
-  const onFixAll = async reports => {
-    const ids = idsForInvocation(reports);
+  const [checked, setChecked] = useState([]);
 
+  const isSelected = entry => checked.some(item => item.id === entry.id);
+
+  const anySelected = checked.length > 0;
+
+  const toggleSelected = (entry, isEntrySelected) => {
+    if (isEntrySelected) {
+      setChecked(checked.filter(item => item.id !== entry.id));
+    } else {
+      setChecked([entry, ...checked]);
+    }
+  };
+
+  const onFixAll = reports => {
+    const ids = idsForInvocationFromReports(reports);
+
+    onFix(ids);
+  };
+
+  const onFixSelected = () => {
+    const ids = idsForInvocationFromEntries(checked);
+
+    onFix(ids);
+  };
+
+  const onFix = async ids => {
     const action = await onFixEntries(invocationFactory(ids));
 
     if (action.type === PREUPGRADE_REPORTS_REMEDIATE_ENTRIES_SUCCESS) {
@@ -60,6 +85,12 @@ const PreupgradeReports = ({
               </div>
             )}
             <Button
+              onClick={() => onFixSelected()}
+              disabled={!anyEntriesFixable(preupgradeReports) || fixAllWorking || !anySelected}
+            >
+              {__('Fix Selected')}
+            </Button>
+            <Button
               onClick={() => onFixAll(preupgradeReports)}
               disabled={!anyEntriesFixable(preupgradeReports) || fixAllWorking}
             >
@@ -72,6 +103,8 @@ const PreupgradeReports = ({
       <PreupgradeReportsList
         allEntries={flattenEntries(preupgradeReports)}
         fixAllWorking={fixAllWorking}
+        isSelected={isSelected}
+        toggleSelected={toggleSelected}
       />
     </React.Fragment>
   );

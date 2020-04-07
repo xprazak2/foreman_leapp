@@ -5,10 +5,10 @@ import classNames from 'classnames';
 
 import PreupgradeReportEntry from './components/PreupgradeReportEntry';
 
-const PreupgradeReportsList = ({ allEntries, fixAllWorking }) => (
+const PreupgradeReportsList = ({ allEntries, fixAllWorking, isSelected, toggleSelected }) => (
   <ListView className={classNames({ working: fixAllWorking })}>
     {allEntries.map((entry, idx) => (
-      <PreupgradeReportEntry entry={entry} key={idx} />
+      <PreupgradeReportEntry entry={entry} key={idx} isEntrySelected={isSelected(entry)} toggleSelected={toggleSelected}/>
     ))}
   </ListView>
 );

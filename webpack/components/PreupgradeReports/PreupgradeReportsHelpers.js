@@ -24,20 +24,17 @@ export const isEmpty = obj => Object.keys(obj).length === 0;
 export const anyEntriesFixable = reports =>
   flattenEntries(reports).some(entryFixable);
 
-export const idsForInvocation = reports =>
-  reports.reduce(
-    (memo, report) => {
-      report.entries.map(entry => {
-        if (entryFixable(entry)) {
-          memo.entryIds = [...memo.entryIds, entry.id];
+export const idsForInvocationFromReports = reports =>
+  idsForJobInvocationFromEntries(flattenEntries(reports));
 
-          if (!memo.hostIds.includes(report.hostId)) {
-            memo.hostIds = [...memo.hostIds, report.hostId];
-          }
-        }
-        return entry;
-      });
-      return memo;
-    },
-    { hostIds: [], entryIds: [] }
-  );
+export const idsForInvocationFromEntries = entries =>
+  entries.reduce((memo, entry) => {
+    if (entryFixable(entry)) {
+      memo.entryIds = [...memo.entryIds, entry.id];
+
+      if (!memo.hostIds.includes(entry.hostId)) {
+        memo.hostIds = [...memo.hostIds, entry.hostId];
+      }
+    }
+    return memo;
+  }, { hostIds: [], entryIds: [] });
