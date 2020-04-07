@@ -9,14 +9,21 @@ const allEntries = [
   { title: 'Not enough credits', severity: 'low' },
 ];
 
+const isSelected = () => false;
+const toggleSelected = () => {};
+
 const fixtures = {
   'should render': {
     allEntries,
     fixAllWorking: false,
+    isSelected,
+    toggleSelected,
   },
   'should render when working': {
     allEntries,
     fixAllWorking: true,
+    isSelected,
+    toggleSelected,
   },
 };
 

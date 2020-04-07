@@ -4,14 +4,16 @@ import { LoadingState, Row } from 'patternfly-react';
 import PropTypes from 'prop-types';
 
 import PreupgradeReportsList from '../PreupgradeReportsList';
-import FixAllButton from './components/FixAllButton';
+
 import EntriesFilter from './components/EntriesFilter';
+import FixSelectedButton from './components/FixSelectedButton';
 
 import {
   flattenEntries,
   isEmpty,
   anyEntriesFixable,
   filterEntries,
+  idsForInvocationFromEntries,
 } from './PreupgradeReportsHelpers';
 
 const PreupgradeReports = ({
@@ -23,6 +25,7 @@ const PreupgradeReports = ({
 }) => {
   const [filterType, setFilterType] = useState('title');
   const [filterValue, setFilterValue] = useState('');
+  const [checked, setChecked] = useState([]);
 
   if (!isEmpty(error)) {
     return (
@@ -45,6 +48,18 @@ const PreupgradeReports = ({
     setFilterType(value);
   };
 
+  const isSelected = entry => checked.some(item => item.id === entry.id);
+
+  const anySelected = checked.length > 0;
+
+  const toggleSelected = (entry, isEntrySelected) => {
+    if (isEntrySelected) {
+      setChecked(checked.filter(item => item.id !== entry.id));
+    } else {
+      setChecked([entry, ...checked]);
+    }
+  };
+
   return (
     <LoadingState loading={loading}>
       <Row>
@@ -58,11 +73,11 @@ const PreupgradeReports = ({
         </div>
         <div className="col-md-4">
           <div className="btn-toolbar pull-right">
-            <FixAllButton
+            <FixSelectedButton
               postUrl={newJobInvocationUrl}
-              disabled={!anyEntriesFixable(preupgradeReports)}
+              disabled={!anyEntriesFixable(preupgradeReports) || !anySelected}
               csrfToken={csrfToken}
-              preupgradeReports={preupgradeReports}
+              ids={idsForInvocationFromEntries(checked)}
             />
           </div>
         </div>
@@ -73,6 +88,8 @@ const PreupgradeReports = ({
           filterValue,
           flattenEntries(preupgradeReports)
         )}
+        isSelected={isSelected}
+        toggleSelected={toggleSelected}
       />
     </LoadingState>
   );

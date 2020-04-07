@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FixAllButton should render 1`] = `
+exports[`FixSelectedButton should render 1`] = `
 <form
   action="/job_invocations/new"
   method="post"
@@ -26,9 +26,15 @@ exports[`FixAllButton should render 1`] = `
     value="leapp_remediation_plan"
   />
   <input
+    key="5"
+    name="host_ids[]"
+    type="hidden"
+    value={5}
+  />
+  <input
     name="inputs[remediation_ids]"
     type="hidden"
-    value=""
+    value="115"
   />
 </form>
 `;

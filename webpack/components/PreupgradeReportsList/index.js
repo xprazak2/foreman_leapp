@@ -8,7 +8,7 @@ import { useForemanSettings } from 'foremanReact/Root/Context/ForemanContext';
 import PreupgradeReportEntry from './components/PreupgradeReportEntry';
 import { entriesPage } from '../PreupgradeReports/PreupgradeReportsHelpers';
 
-const PreupgradeReportsList = ({ allEntries }) => {
+const PreupgradeReportsList = ({ allEntries, isSelected, toggleSelected }) => {
   const { perPage, perPageOptions } = useForemanSettings();
   const [pagination, setPagination] = useState({
     page: 1,
@@ -19,7 +19,12 @@ const PreupgradeReportsList = ({ allEntries }) => {
   return (
     <ListView>
       {entriesPage(allEntries, pagination).map((entry, idx) => (
-        <PreupgradeReportEntry entry={entry} key={idx} />
+        <PreupgradeReportEntry
+          entry={entry}
+          key={idx}
+          isEntrySelected={isSelected(entry)}
+          toggleSelected={toggleSelected}
+         />
       ))}
       <Pagination
         viewType="list"
@@ -34,6 +39,8 @@ const PreupgradeReportsList = ({ allEntries }) => {
 
 PreupgradeReportsList.propTypes = {
   allEntries: PropTypes.array.isRequired,
+  isSelected: PropTypes.func.isRequired,
+  toggleSelected: PropTypes.func.isRequired,
 };
 
 export default PreupgradeReportsList;

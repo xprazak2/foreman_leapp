@@ -14,12 +14,21 @@ import {
   getSummary,
   getTags,
 } from './helpers';
+import { additionalInfo } from './helpers';
+import { entryFixable } from '../../PreupgradeReports/PreupgradeReportsHelpers';
 
-const PreupgradeReportEntry = ({ entry }) => (
+const PreupgradeReportEntry = ({ entry, isEntrySelected, toggleSelected }) => (
   <ListView.Item
     key={entry.id}
     stacked
-    checkboxInput={<input type="checkbox" />}
+    checkboxInput={
+      <input
+        type="checkbox"
+        value={isEntrySelected}
+        disabled={!entryFixable(entry)}
+        onChange={() => toggleSelected(entry, isEntrySelected)}
+      />
+    }
     description={entry.title}
     additionalInfo={[
       <ListView.InfoItem key={itemIteratorId(entry, entry.hostname)}>
@@ -49,6 +58,8 @@ const PreupgradeReportEntry = ({ entry }) => (
 
 PreupgradeReportEntry.propTypes = {
   entry: PropTypes.object.isRequired,
+  isEntrySelected: PropTypes.bool.isRequired,
+  toggleSelected: PropTypes.func.isRequired,
 };
 
 export default PreupgradeReportEntry;
