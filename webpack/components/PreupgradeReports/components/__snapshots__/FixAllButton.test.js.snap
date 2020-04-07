@@ -13,7 +13,7 @@ exports[`FixAllButton should render 1`] = `
     disabled={false}
     type="submit"
   >
-    <Component />
+    Fix All
   </Button>
   <input
     name="authenticity_token"

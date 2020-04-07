@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MessageBox from 'foremanReact/components/common/MessageBox';
 import { LoadingState, Row } from 'patternfly-react';
 import PropTypes from 'prop-types';
 
 import PreupgradeReportsList from '../PreupgradeReportsList';
 import FixAllButton from './components/FixAllButton';
+import EntriesFilter from './components/EntriesFilter';
 
 import {
   flattenEntries,
   isEmpty,
   anyEntriesFixable,
+  filterEntries,
 } from './PreupgradeReportsHelpers';
 
 const PreupgradeReports = ({
@@ -19,6 +21,9 @@ const PreupgradeReports = ({
   csrfToken,
   newJobInvocationUrl,
 }) => {
+  const [filterType, setFilterType] = useState('title');
+  const [filterValue, setFilterValue] = useState('');
+
   if (!isEmpty(error)) {
     return (
       <MessageBox
@@ -29,11 +34,29 @@ const PreupgradeReports = ({
     );
   }
 
+  const onFilterValueChange = value => {
+    setFilterValue(value);
+  };
+
+  const onFilterValueClear = () => setFilterValue('');
+
+  const onFilterTypeChange = value => {
+    onFilterValueClear();
+    setFilterType(value);
+  };
+
   return (
     <LoadingState loading={loading}>
       <Row>
-        <div className="title-filter col-md-4">&nbsp;</div>
-        <div id="title_action" className="col-md-8">
+        <div className="col-md-8">
+          <EntriesFilter
+            filterType={filterType}
+            onFilterTypeChange={onFilterTypeChange}
+            filterValue={filterValue}
+            onFilterValueChange={onFilterValueChange}
+          />
+        </div>
+        <div className="col-md-4">
           <div className="btn-toolbar pull-right">
             <FixAllButton
               postUrl={newJobInvocationUrl}
@@ -44,7 +67,13 @@ const PreupgradeReports = ({
           </div>
         </div>
       </Row>
-      <PreupgradeReportsList allEntries={flattenEntries(preupgradeReports)} />
+      <PreupgradeReportsList
+        allEntries={filterEntries(
+          filterType,
+          filterValue,
+          flattenEntries(preupgradeReports)
+        )}
+      />
     </LoadingState>
   );
 };
