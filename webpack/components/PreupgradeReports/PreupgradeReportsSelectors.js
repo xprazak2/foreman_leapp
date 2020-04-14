@@ -6,3 +6,10 @@ export const selectPreupgradeReports = state =>
 export const selectLoadingPreupgradeReports = state =>
   selectPreupgrade(state).loadingPreupgradeReports;
 export const selectError = state => selectPreupgrade(state).error;
+
+export const selectRexState = state => state.foremanRemoteExecutionReducers;
+
+export const selectJobInvocations = state =>
+  selectRexState(state).jobInvocations;
+export const selectJobInvocationsPolling = state =>
+  selectJobInvocations(state).isPolling;

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -10,9 +10,10 @@ import {
   selectPreupgradeReports,
   selectLoadingPreupgradeReports,
   selectError,
+  selectJobInvocationsPolling,
 } from './PreupgradeReportsSelectors';
 
-import { getPreupgradeReports } from './PreupgradeReportsActions';
+import { getPreupgradeReportsAction } from './PreupgradeReportsActions';
 
 const WrappedPreupgradeReports = ({ url, newJobInvocationUrl }) => {
   const loading = useSelector(state => selectLoadingPreupgradeReports(state));
@@ -21,11 +22,24 @@ const WrappedPreupgradeReports = ({ url, newJobInvocationUrl }) => {
   );
   const error = useSelector(state => selectError(state));
 
+  const invocationPending = useSelector(state =>
+    selectJobInvocationsPolling(state)
+  );
+
+  const previousInvocationRef = useRef();
+  useEffect(() => {
+    previousInvocationRef.current = invocationPending;
+  });
+
+  const previousInvocationPending = previousInvocationRef.current;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getPreupgradeReports(url));
-  }, [url, dispatch]);
+    if (previousInvocationPending && !invocationPending) {
+      dispatch(getPreupgradeReportsAction(url));
+    }
+  }, [dispatch, url, invocationPending, previousInvocationPending]);
 
   return (
     <PreupgradeReports

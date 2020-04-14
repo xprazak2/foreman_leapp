@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoReports should render 1`] = `
+<EmptyStatePattern
+  description="If job execution is still running, reports may not have been yet created. If job generates any reports, they will be loaded once the job finishes."
+  header="No Preupgrade Reports Found"
+  icon="in-progress"
+  iconType="pf"
+/>
+`;
