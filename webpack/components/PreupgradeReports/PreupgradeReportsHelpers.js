@@ -14,7 +14,7 @@ export const anyEntriesFixable = reports =>
 export const idsForInvocation = reports =>
   reports.reduce(
     (memo, report) => {
-      report.entries.map(entry => {
+      report.entries.forEach(entry => {
         if (entryFixable(entry)) {
           memo.entryIds = [...memo.entryIds, entry.id];
 
@@ -22,7 +22,6 @@ export const idsForInvocation = reports =>
             memo.hostIds = [...memo.hostIds, report.hostId];
           }
         }
-        return entry;
       });
       return memo;
     },
