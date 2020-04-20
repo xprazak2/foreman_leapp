@@ -4,6 +4,7 @@ export const reportEntry = {
   title: 'Difference in Python versions and support in RHEL 8',
   timeStamp: '2020-04-08T16:49:34.453295Z',
   tags: ['python'],
+  summary: 'This checks difference in python versions',
   detail: {
     related_resources: [
       {

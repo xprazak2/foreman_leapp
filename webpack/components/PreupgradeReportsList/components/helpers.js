@@ -18,8 +18,8 @@ export const presentSeverity = severity => {
   }
 };
 
-export const tagInfo = entry =>
-  entry.map(attr => (
+export const tagInfo = tags =>
+  tags.map(attr => (
     <Badge key={attr} variant="pill primary">
       {attr}
     </Badge>

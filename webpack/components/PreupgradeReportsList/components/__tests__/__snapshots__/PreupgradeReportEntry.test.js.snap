@@ -48,7 +48,6 @@ exports[`PreupgradeReportEntry should render 1`] = `
       type="checkbox"
     />
   }
-  className="listViewItem--listItemVariants"
   compoundExpand={false}
   compoundExpanded={false}
   description="no title"
