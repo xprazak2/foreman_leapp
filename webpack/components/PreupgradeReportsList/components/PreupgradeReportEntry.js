@@ -22,12 +22,16 @@ const PreupgradeReportEntry = ({ entry, isEntrySelected, toggleSelected }) => (
     key={entry.id}
     stacked
     checkboxInput={
-      <input
-        type="checkbox"
-        value={isEntrySelected}
-        disabled={!entryFixable(entry)}
-        onChange={() => toggleSelected(entry, isEntrySelected)}
-      />
+      entryFixable(entry) ? (
+        <input
+          type="checkbox"
+          value={isEntrySelected}
+          disabled={!entryFixable(entry)}
+          onChange={() => toggleSelected(entry, isEntrySelected)}
+        />
+      ) : (
+        <div className="empty-checkbox" />
+      )
     }
     description={entry.title}
     additionalInfo={[
