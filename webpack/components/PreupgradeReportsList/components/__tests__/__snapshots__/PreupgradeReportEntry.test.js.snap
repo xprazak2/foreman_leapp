@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreupgradeReportEntry should render 1`] = `
+<ListViewItem
+  actions={null}
+  additionalInfo={
+    Array [
+      <ListViewInfoItem
+        className=""
+        stacked={false}
+      >
+        <Icon
+          name="cluster"
+          type="pf"
+        />
+         
+      </ListViewInfoItem>,
+      <ListViewInfoItem
+        className=""
+        stacked={false}
+      >
+        <Icon
+          name="resources-full"
+          style={
+            Object {
+              "color": "#39a5dc",
+            }
+          }
+          type="pf"
+        />
+        low
+      </ListViewInfoItem>,
+      <EmptyInfoItem
+        attr="remediation"
+        entry={
+          Object {
+            "id": 5,
+            "preupgradeReportId": 7,
+            "severity": "low",
+            "title": "no title",
+          }
+        }
+      />,
+    ]
+  }
+  checkboxInput={
+    <div
+      className="empty-checkbox"
+    />
+  }
+  compoundExpand={false}
+  compoundExpanded={false}
+  description="no title"
+  heading={null}
+  hideCloseIcon={false}
+  initExpanded={false}
+  key="5"
+  leftContent={null}
+  onCloseCompoundExpand={[Function]}
+  onExpand={[Function]}
+  onExpandClose={[Function]}
+  stacked={true}
+>
+  <Grid
+    bsClass="container"
+    componentClass="div"
+    fluid={true}
+  >
+    <Row
+      bsClass="row"
+      componentClass="div"
+    >
+      <Col
+        bsClass="col"
+        componentClass="div"
+        md={1}
+      >
+        <strong>
+          Title
+        </strong>
+      </Col>
+      <Col
+        bsClass="col"
+        componentClass="div"
+        md={8}
+      >
+        no title
+      </Col>
+    </Row>
+    <Row
+      bsClass="row"
+      className="top-padded"
+      componentClass="div"
+    >
+      <Col
+        bsClass="col"
+        componentClass="div"
+        md={1}
+      >
+        <strong>
+          Risk Factor
+        </strong>
+      </Col>
+      <Col
+        bsClass="col"
+        componentClass="div"
+        md={8}
+      >
+        <Icon
+          name="resources-full"
+          style={
+            Object {
+              "color": "#39a5dc",
+            }
+          }
+          type="pf"
+        />
+         
+        low
+      </Col>
+    </Row>
+    <div />
+    <div />
+    <div />
+    <div />
+  </Grid>
+</ListViewItem>
+`;

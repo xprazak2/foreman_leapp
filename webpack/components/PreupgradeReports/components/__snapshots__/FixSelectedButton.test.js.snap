@@ -13,7 +13,7 @@ exports[`FixSelectedButton should render 1`] = `
     disabled={false}
     type="submit"
   >
-    Fix All
+    Fix Selected
   </Button>
   <input
     name="authenticity_token"

@@ -14,7 +14,6 @@ import {
   getSummary,
   getTags,
 } from './helpers';
-import { additionalInfo } from './helpers';
 import { entryFixable } from '../../PreupgradeReports/PreupgradeReportsHelpers';
 
 const PreupgradeReportEntry = ({ entry, isEntrySelected, toggleSelected }) => (
