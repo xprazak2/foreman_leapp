@@ -13,6 +13,8 @@ import {
   idsForInvocationFromReports,
   entriesPage,
   filterEntries,
+  fixableEntries,
+  sortEntries,
 } from '../PreupgradeReportsHelpers';
 
 const fixtures = {
@@ -43,6 +45,33 @@ const fixtures = {
     filterEntries('fix', 'command', flattenEntries(reportsWithRemediations)),
   'should filter entries by inhibitor': () =>
     filterEntries('inhibitor', 'yes', flattenEntries(preupgradeReports)),
+  'should return fixable entries': () =>
+    fixableEntries(reportsWithRemediations),
+  'should sort entries by title in ascending order': () =>
+    sortEntries(flattenEntries(preupgradeReports), {
+      attribute: 'title',
+      order: 'asc',
+    }),
+  'should sort entries by title in descending order': () =>
+    sortEntries(flattenEntries(preupgradeReports), {
+      attribute: 'title',
+      order: 'desc',
+    }),
+  'should sort entries by hostname': () =>
+    sortEntries(flattenEntries(preupgradeReports), {
+      attribute: 'hostname',
+      order: 'asc',
+    }),
+  'should sort entries by severity': () =>
+    sortEntries(flattenEntries(preupgradeReports), {
+      attribute: 'severity',
+      order: 'asc',
+    }),
+  'should sort entries by remediations': () =>
+    sortEntries(flattenEntries(reportsWithRemediations), {
+      attribute: 'fix',
+      order: 'asc',
+    }),
 };
 
 describe('PreupgradeReportsHelpers', () =>

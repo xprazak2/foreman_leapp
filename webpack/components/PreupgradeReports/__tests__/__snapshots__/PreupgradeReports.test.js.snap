@@ -30,7 +30,7 @@ exports[`PreupgradeReports should render when loaded with reports 1`] = `
               "flags": Array [],
               "hostname": "host.example.com",
               "id": 42,
-              "severity": "Too severe to talk about",
+              "severity": "info",
               "title": "Fix me!",
             },
             Object {

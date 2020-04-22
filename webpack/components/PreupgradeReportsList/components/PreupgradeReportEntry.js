@@ -16,6 +16,7 @@ import {
   getTags,
   severityToCssClass,
 } from './helpers';
+
 import { entryFixable } from '../../PreupgradeReports/PreupgradeReportsHelpers';
 
 const PreupgradeReportEntry = ({ entry, isEntrySelected, toggleSelected }) => (

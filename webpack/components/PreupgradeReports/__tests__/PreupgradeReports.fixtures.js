@@ -4,7 +4,7 @@ export const preupgradeReports = [
     entries: [
       {
         title: 'Fix me!',
-        severity: 'Too severe to talk about',
+        severity: 'info',
         id: 42,
         hostname: 'host.example.com',
         flags: [],
@@ -66,7 +66,7 @@ export const reportsWithRemediations = [
     entries: [
       {
         title: 'Fix me!',
-        severity: 'Too severe to talk about',
+        severity: 'info',
         detail: { remediations: [{ type: 'hint' }] },
       },
       { title: 'I am broken too', severity: 'medium' },

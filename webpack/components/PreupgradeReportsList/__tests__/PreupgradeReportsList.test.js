@@ -11,6 +11,9 @@ const allEntries = [
 
 const isSelected = () => false;
 const toggleSelected = () => {};
+const sort = { attribute: '', order: 'asc' };
+const changeSort = () => {};
+const toggleSelectAll = () => {};
 
 const fixtures = {
   'should render': {
@@ -18,12 +21,18 @@ const fixtures = {
     fixAllWorking: false,
     isSelected,
     toggleSelected,
+    sort,
+    changeSort,
+    toggleSelectAll,
   },
   'should render when working': {
     allEntries,
     fixAllWorking: true,
     isSelected,
     toggleSelected,
+    sort,
+    changeSort,
+    toggleSelectAll,
   },
 };
 
