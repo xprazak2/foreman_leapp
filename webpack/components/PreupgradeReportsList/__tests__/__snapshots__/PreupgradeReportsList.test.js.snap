@@ -5,6 +5,16 @@ exports[`PreupgradeReportsList should render 1`] = `
   className=""
   id="preupgrade-report-entries-list-view"
 >
+  <PreupgradeReportsListHeader
+    changeSort={[Function]}
+    sort={
+      Object {
+        "attribute": "",
+        "order": "asc",
+      }
+    }
+    toggleSelectAll={[Function]}
+  />
   <PreupgradeReportEntry
     entry={
       Object {
@@ -76,6 +86,16 @@ exports[`PreupgradeReportsList should render when working 1`] = `
   className=""
   id="preupgrade-report-entries-list-view"
 >
+  <PreupgradeReportsListHeader
+    changeSort={[Function]}
+    sort={
+      Object {
+        "attribute": "",
+        "order": "asc",
+      }
+    }
+    toggleSelectAll={[Function]}
+  />
   <PreupgradeReportEntry
     entry={
       Object {

@@ -97,7 +97,15 @@ exports[`PreupgradeReports should render when loaded 1`] = `
         },
       ]
     }
+    changeSort={[Function]}
     isSelected={[Function]}
+    sort={
+      Object {
+        "attribute": "",
+        "order": "desc",
+      }
+    }
+    toggleSelectAll={[Function]}
     toggleSelected={[Function]}
   />
 </LoadingState>
@@ -147,7 +155,15 @@ exports[`PreupgradeReports should render when loading 1`] = `
   </Row>
   <PreupgradeReportsList
     allEntries={Array []}
+    changeSort={[Function]}
     isSelected={[Function]}
+    sort={
+      Object {
+        "attribute": "",
+        "order": "desc",
+      }
+    }
+    toggleSelectAll={[Function]}
     toggleSelected={[Function]}
   />
 </LoadingState>

@@ -6,11 +6,19 @@ import Pagination from 'foremanReact/components/Pagination/PaginationWrapper';
 import { useForemanSettings } from 'foremanReact/Root/Context/ForemanContext';
 
 import PreupgradeReportEntry from './components/PreupgradeReportEntry';
+import PreupgradeReportsListHeader from './components/PreupgradeReportsListHeader';
 import { entriesPage } from '../PreupgradeReports/PreupgradeReportsHelpers';
 
 import './PreupgradeReportList.scss';
 
-const PreupgradeReportsList = ({ allEntries, isSelected, toggleSelected }) => {
+const PreupgradeReportsList = ({
+  allEntries,
+  isSelected,
+  toggleSelected,
+  sort,
+  changeSort,
+  toggleSelectAll,
+}) => {
   const { perPage, perPageOptions } = useForemanSettings();
   const [pagination, setPagination] = useState({
     page: 1,
@@ -20,6 +28,11 @@ const PreupgradeReportsList = ({ allEntries, isSelected, toggleSelected }) => {
 
   return (
     <ListView id="preupgrade-report-entries-list-view">
+      <PreupgradeReportsListHeader
+        sort={sort}
+        changeSort={changeSort}
+        toggleSelectAll={toggleSelectAll}
+      />
       {entriesPage(allEntries, pagination).map((entry, idx) => (
         <PreupgradeReportEntry
           entry={entry}
@@ -43,6 +56,9 @@ PreupgradeReportsList.propTypes = {
   allEntries: PropTypes.array.isRequired,
   isSelected: PropTypes.func.isRequired,
   toggleSelected: PropTypes.func.isRequired,
+  sort: PropTypes.object.isRequired,
+  changeSort: PropTypes.func.isRequired,
+  toggleSelectAll: PropTypes.func.isRequired,
 };
 
 export default PreupgradeReportsList;

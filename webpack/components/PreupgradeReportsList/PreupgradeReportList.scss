@@ -1,3 +1,5 @@
+@import '~@theforeman/vendor/scss/variables';
+
 #preupgrade-report-entries-list-view {
   .empty-checkbox {
     content: '';
@@ -6,5 +8,39 @@
     content: " ";
     margin: 4px 0;
     display: block;
+  }
+
+  .sortable-header {
+    &.active {
+      color: $color-pf-blue-400;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .fa {
+      margin-right: 10px;
+    }
+  }
+
+  .list-view-pf-additional-info-item {
+    flex: 1;
+  }
+
+  .list-view-header {
+    border-top: 0px;
+    background-color: #fff;
+    border-left-color: #fff;
+    border-right-color: #fff;
+
+    .list-view-pf-description {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .list-view-pf-checkbox {
+      margin-left: 17px;
+    }
   }
 }

@@ -14,6 +14,8 @@ import {
   anyEntriesFixable,
   filterEntries,
   idsForInvocationFromEntries,
+  sortEntries,
+  fixableEntries,
 } from './PreupgradeReportsHelpers';
 
 const PreupgradeReports = ({
@@ -26,6 +28,8 @@ const PreupgradeReports = ({
   const [filterType, setFilterType] = useState('title');
   const [filterValue, setFilterValue] = useState('');
   const [checked, setChecked] = useState([]);
+
+  const [sort, setSort] = useState({ attribute: '', order: 'desc' });
 
   if (!isEmpty(error)) {
     return (
@@ -60,6 +64,20 @@ const PreupgradeReports = ({
     }
   };
 
+  const toggleSelectAll = () => {
+    const allFixable = fixableEntries(preupgradeReports);
+
+    if (checked.length === allFixable.length) {
+      setChecked([]);
+    } else {
+      setChecked(allFixable);
+    }
+  };
+
+  const changeSort = value => {
+    setSort({ ...sort, ...value });
+  };
+
   return (
     <LoadingState loading={loading}>
       <Row>
@@ -86,10 +104,13 @@ const PreupgradeReports = ({
         allEntries={filterEntries(
           filterType,
           filterValue,
-          flattenEntries(preupgradeReports)
+          sortEntries(flattenEntries(preupgradeReports), sort)
         )}
         isSelected={isSelected}
         toggleSelected={toggleSelected}
+        sort={sort}
+        changeSort={changeSort}
+        toggleSelectAll={toggleSelectAll}
       />
     </LoadingState>
   );
