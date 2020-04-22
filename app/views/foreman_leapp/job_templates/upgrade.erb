@@ -9,8 +9,9 @@ template_inputs:
 - name: reboot
   description: reboot the vm automaticaly to continue with the upgrade
   input_type: user
-  required: false
-  options: "false\ntrue"
+  required: true
+  default: "true"
+  options: "true\nfalse"
 %>
 ---
 - hosts: all
