@@ -9,6 +9,7 @@ import getCsrfToken from '../../csrf';
 import {
   selectPreupgradeReports,
   selectLoadingPreupgradeReports,
+  selectReportsExpected,
   selectError,
   selectJobInvocationsPolling,
 } from './PreupgradeReportsSelectors';
@@ -25,6 +26,8 @@ const WrappedPreupgradeReports = ({ url, newJobInvocationUrl }) => {
   const invocationPending = useSelector(state =>
     selectJobInvocationsPolling(state)
   );
+
+  const reportsExpected = useSelector(state => selectReportsExpected(state));
 
   const previousInvocationRef = useRef();
   useEffect(() => {
@@ -48,6 +51,7 @@ const WrappedPreupgradeReports = ({ url, newJobInvocationUrl }) => {
       loading={loading}
       csrfToken={getCsrfToken()}
       newJobInvocationUrl={newJobInvocationUrl}
+      reportsExpected={reportsExpected}
     />
   );
 };

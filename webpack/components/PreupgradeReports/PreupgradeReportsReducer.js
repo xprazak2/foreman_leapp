@@ -8,6 +8,7 @@ import {
 
 export const initialState = Immutable({
   loadingPreupgradeReports: false,
+  reportsExpected: false,
   preupgradeReports: [],
   error: {},
 });
@@ -21,6 +22,7 @@ const reducer = (state = initialState, action) => {
       return state.merge({
         loadingPreupgradeReports: false,
         preupgradeReports: payload.results,
+        reportsExpected: true,
       });
     case PREUPGRADE_REPORTS_FAILURE:
       return state.merge({

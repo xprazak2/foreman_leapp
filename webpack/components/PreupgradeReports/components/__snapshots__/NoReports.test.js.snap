@@ -1,9 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NoReports should render 1`] = `
+exports[`NoReports should render when reports expected 1`] = `
 <EmptyStatePattern
-  description="If job execution is still running, reports may not have been yet created. If job generates any reports, they will be loaded once the job finishes."
-  header="No Preupgrade Reports Found"
+  description="The preupgrade report could not be generated, check the job details for the reason"
+  header="No Preupgrade Report Available"
+  icon="warning-triangle-o"
+  iconType="pf"
+/>
+`;
+
+exports[`NoReports should render when reports not expected 1`] = `
+<EmptyStatePattern
+  description="The preupgrade report will be available after the job finishes"
+  header="No Preupgrade Report Available"
   icon="in-progress"
   iconType="pf"
 />

@@ -16,6 +16,7 @@ const fixtures = {
     csrfToken,
     newJobInvocationUrl,
     getPreupgradeReports,
+    reportsExpected: true,
   },
   'should render when loaded without reports': {
     loading: false,
@@ -24,6 +25,7 @@ const fixtures = {
     csrfToken,
     newJobInvocationUrl,
     getPreupgradeReports,
+    reportsExpected: true,
   },
   'should render when loading': {
     loading: true,
@@ -32,6 +34,7 @@ const fixtures = {
     csrfToken,
     newJobInvocationUrl,
     getPreupgradeReports,
+    reportsExpected: false,
   },
   'should render error': {
     loading: false,
@@ -43,6 +46,7 @@ const fixtures = {
     csrfToken,
     newJobInvocationUrl,
     getPreupgradeReports,
+    reportsExpected: false,
   },
 };
 
