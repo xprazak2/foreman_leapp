@@ -33,7 +33,10 @@ module ForemanLeapp
                          partial: 'job_invocations/leapp_preupgrade_report',
                          name: _('Leapp preupgrade report'),
                          id: 'leapp_preupgrade_report',
-                         onlyif: proc { |subject| ::Helpers::JobHelper.correct_feature?(subject, 'leapp_preupgrade') }
+                         onlyif: proc { |subject|
+                           ::Helpers::JobHelper.correct_feature?(subject, 'leapp_preupgrade') ||
+                             ::Helpers::JobHelper.correct_feature?(subject, 'leapp_remediation_plan')
+                         }
         end
       end
     end
