@@ -5,6 +5,7 @@ Object {
   "error": Object {},
   "loadingPreupgradeReports": false,
   "preupgradeReports": Array [],
+  "reportsExpected": false,
 }
 `;
 
@@ -16,6 +17,7 @@ Object {
   },
   "loadingPreupgradeReports": false,
   "preupgradeReports": Array [],
+  "reportsExpected": false,
 }
 `;
 
@@ -24,6 +26,7 @@ Object {
   "error": Object {},
   "loadingPreupgradeReports": true,
   "preupgradeReports": Array [],
+  "reportsExpected": false,
 }
 `;
 
@@ -85,5 +88,6 @@ Object {
       "hostId": 6,
     },
   ],
+  "reportsExpected": true,
 }
 `;

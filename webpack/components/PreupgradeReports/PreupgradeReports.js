@@ -15,25 +15,15 @@ import {
   filterEntries,
 } from './PreupgradeReportsHelpers';
 
+import NoReports from './components/NoReports';
+
 const PreupgradeReports = ({
   preupgradeReports,
-  loading,
-  error,
   csrfToken,
   newJobInvocationUrl,
 }) => {
   const [filterType, setFilterType] = useState('title');
   const [filterValue, setFilterValue] = useState('');
-
-  if (!isEmpty(error)) {
-    return (
-      <MessageBox
-        key="preupgrade-reports-error"
-        icontype="error-circle-o"
-        msg={`Could not retrieve data: ${error.statusText} - ${error.errorMsg}`}
-      />
-    );
-  }
 
   const onFilterValueChange = value => {
     setFilterValue(value);
@@ -47,7 +37,7 @@ const PreupgradeReports = ({
   };
 
   return (
-    <LoadingState loading={loading}>
+    <React.Fragment>
       <Row>
         <div className="col-md-8">
           <EntriesFilter
@@ -80,16 +70,38 @@ const PreupgradeReports = ({
           flattenEntries(preupgradeReports)
         )}
       />
+    </React.Fragment>
+  );
+};
+
+const withLoadingState = Component => props => {
+  const { error, loading, preupgradeReports, reportsExpected } = props;
+
+  if (!isEmpty(error)) {
+    return (
+      <MessageBox
+        key="preupgrade-reports-error"
+        icontype="error-circle-o"
+        msg={`Could not retrieve data: ${error.statusText} - ${error.errorMsg}`}
+      />
+    );
+  }
+
+  return (
+    <LoadingState loading={loading}>
+      {preupgradeReports.length > 0 ? (
+        <Component {...props} />
+      ) : (
+        <NoReports reportsExpected={reportsExpected} />
+      )}
     </LoadingState>
   );
 };
 
 PreupgradeReports.propTypes = {
   preupgradeReports: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired,
-  error: PropTypes.object.isRequired,
   csrfToken: PropTypes.string.isRequired,
   newJobInvocationUrl: PropTypes.string.isRequired,
 };
 
-export default PreupgradeReports;
+export default withLoadingState(PreupgradeReports);

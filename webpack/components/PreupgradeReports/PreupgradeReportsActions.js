@@ -7,7 +7,7 @@ import {
   PREUPGRADE_REPORTS_FAILURE,
 } from '../../consts';
 
-export const getPreupgradeReports = url => async dispatch => {
+export const getPreupgradeReportsAction = url => async dispatch => {
   dispatch({ type: PREUPGRADE_REPORTS_REQUEST });
 
   try {
