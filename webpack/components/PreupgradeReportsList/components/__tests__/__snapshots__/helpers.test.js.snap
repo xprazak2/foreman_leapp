@@ -13,6 +13,14 @@ exports[`PreupgradeReportList/helpers should detect if has remediations 1`] = `
 </ListViewInfoItem>
 `;
 
+exports[`PreupgradeReportList/helpers should return css class for high severity 1`] = `"severity-high"`;
+
+exports[`PreupgradeReportList/helpers should return css class for low severity 1`] = `"severity-low"`;
+
+exports[`PreupgradeReportList/helpers should return css class for medium severity 1`] = `"severity-medium"`;
+
+exports[`PreupgradeReportList/helpers should return css class for unknown severity 1`] = `"severity-unknown"`;
+
 exports[`PreupgradeReportList/helpers should return externals 1`] = `
 Array [
   <Row
@@ -43,8 +51,6 @@ Array [
   </Row>,
 ]
 `;
-
-exports[`PreupgradeReportList/helpers should return hex for severity 1`] = `"#39a5dc"`;
 
 exports[`PreupgradeReportList/helpers should return remediations 1`] = `
 Array [
@@ -94,12 +100,8 @@ exports[`PreupgradeReportList/helpers should return severity 1`] = `
     md={8}
   >
     <Icon
+      className="severity-high"
       name="resources-full"
-      style={
-        Object {
-          "color": "#cc0000",
-        }
-      }
       type="pf"
     />
      

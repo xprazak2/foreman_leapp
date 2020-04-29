@@ -14,12 +14,14 @@ Array [
   Object {
     "entries": Array [
       Object {
+        "flags": Array [],
         "hostname": "host.example.com",
         "id": 42,
         "severity": "Too severe to talk about",
         "title": "Fix me!",
       },
       Object {
+        "flags": Array [],
         "hostname": "host.example.com",
         "id": 43,
         "severity": "medium",
@@ -31,30 +33,37 @@ Array [
   Object {
     "entries": Array [
       Object {
+        "flags": Array [
+          "inhibitor",
+        ],
         "hostname": "foo.example.com",
         "id": 44,
         "severity": "high",
         "title": "Octocat is not happy",
       },
       Object {
+        "flags": Array [],
         "hostname": "foo.example.com",
         "id": 45,
         "severity": "low",
         "title": "Not enough credits",
       },
       Object {
+        "flags": Array [],
         "hostname": "foo.example.com",
         "id": 46,
         "severity": "medium",
         "title": "SELinux is turned off",
       },
       Object {
+        "flags": Array [],
         "hostname": "foo.example.com",
         "id": 47,
         "severity": "medium",
         "title": "Root password is too short",
       },
       Object {
+        "flags": Array [],
         "hostname": "foo.example.com",
         "id": 49,
         "severity": "high",

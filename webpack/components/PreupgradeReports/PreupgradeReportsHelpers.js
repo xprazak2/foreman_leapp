@@ -8,6 +8,23 @@ const entryWithFixKind = kind => entry =>
 
 export const entryFixable = entryWithFixKind('command');
 
+export const isInhibitor = entry =>
+  entry.flags && entry.flags.some(flag => flag === 'inhibitor');
+
+export const byInhibitor = value => entry => {
+  const inhibitsUpgrade = isInhibitor(entry);
+
+  if (value === 'yes') {
+    return inhibitsUpgrade;
+  }
+
+  if (value === 'no') {
+    return !inhibitsUpgrade;
+  }
+
+  return true;
+};
+
 export const isEmpty = obj => Object.keys(obj).length === 0;
 
 export const anyEntriesFixable = reports =>
@@ -44,6 +61,10 @@ export const filterEntries = (attribute, value, entries) => {
 
   if (attribute === 'fix') {
     return entries.filter(entryWithFixKind(value));
+  }
+
+  if (attribute === 'inhibitor') {
+    return entries.filter(byInhibitor(value));
   }
 
   return entries.filter(entry =>

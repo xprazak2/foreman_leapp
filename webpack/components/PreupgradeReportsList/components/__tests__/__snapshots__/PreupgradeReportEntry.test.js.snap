@@ -20,18 +20,24 @@ exports[`PreupgradeReportEntry should render 1`] = `
         stacked={false}
       >
         <Icon
+          className="severity-low"
           name="resources-full"
-          style={
-            Object {
-              "color": "#39a5dc",
-            }
-          }
           type="pf"
         />
         low
       </ListViewInfoItem>,
       <EmptyInfoItem
         attr="remediation"
+        entry={
+          Object {
+            "id": 5,
+            "preupgradeReportId": 7,
+            "severity": "low",
+            "title": "no title",
+          }
+        }
+      />,
+      <InhibitorInfoItem
         entry={
           Object {
             "id": 5,
@@ -110,12 +116,8 @@ exports[`PreupgradeReportEntry should render 1`] = `
         md={8}
       >
         <Icon
+          className="severity-low"
           name="resources-full"
-          style={
-            Object {
-              "color": "#39a5dc",
-            }
-          }
           type="pf"
         />
          
