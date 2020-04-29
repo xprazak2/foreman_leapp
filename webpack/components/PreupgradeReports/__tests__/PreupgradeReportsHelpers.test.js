@@ -41,6 +41,8 @@ const fixtures = {
     filterEntries('hostname', 'foo', flattenEntries(preupgradeReports)),
   'should filter entries by remediations': () =>
     filterEntries('fix', 'command', flattenEntries(reportsWithRemediations)),
+  'should filter entries by inhibitor': () =>
+    filterEntries('inhibitor', 'yes', flattenEntries(preupgradeReports))
 };
 
 describe('PreupgradeReportsHelpers', () =>

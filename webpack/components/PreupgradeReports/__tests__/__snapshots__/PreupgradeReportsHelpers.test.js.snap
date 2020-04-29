@@ -24,34 +24,55 @@ exports[`PreupgradeReportsHelpers should detect non-empty object 1`] = `false`;
 exports[`PreupgradeReportsHelpers should filter entries by host 1`] = `
 Array [
   Object {
+    "flags": Array [
+      "inhibitor",
+    ],
     "hostname": "foo.example.com",
     "id": 44,
     "severity": "high",
     "title": "Octocat is not happy",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 45,
     "severity": "low",
     "title": "Not enough credits",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 46,
     "severity": "medium",
     "title": "SELinux is turned off",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 47,
     "severity": "medium",
     "title": "Root password is too short",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 49,
     "severity": "high",
     "title": "No chocolate chip cookies in cookie jar",
+  },
+]
+`;
+
+exports[`PreupgradeReportsHelpers should filter entries by inhibitor 1`] = `
+Array [
+  Object {
+    "flags": Array [
+      "inhibitor",
+    ],
+    "hostname": "foo.example.com",
+    "id": 44,
+    "severity": "high",
+    "title": "Octocat is not happy",
   },
 ]
 `;
@@ -75,18 +96,21 @@ Array [
 exports[`PreupgradeReportsHelpers should filter entries by severity 1`] = `
 Array [
   Object {
+    "flags": Array [],
     "hostname": "host.example.com",
     "id": 43,
     "severity": "medium",
     "title": "I am broken too",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 46,
     "severity": "medium",
     "title": "SELinux is turned off",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 47,
     "severity": "medium",
@@ -98,6 +122,7 @@ Array [
 exports[`PreupgradeReportsHelpers should filter entries by title 1`] = `
 Array [
   Object {
+    "flags": Array [],
     "hostname": "host.example.com",
     "id": 43,
     "severity": "medium",
@@ -109,18 +134,21 @@ Array [
 exports[`PreupgradeReportsHelpers should return entries page 1`] = `
 Array [
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 45,
     "severity": "low",
     "title": "Not enough credits",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 46,
     "severity": "medium",
     "title": "SELinux is turned off",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 47,
     "severity": "medium",
@@ -132,42 +160,51 @@ Array [
 exports[`PreupgradeReportsHelpers should return flattened entrues 1`] = `
 Array [
   Object {
+    "flags": Array [],
     "hostname": "host.example.com",
     "id": 42,
     "severity": "Too severe to talk about",
     "title": "Fix me!",
   },
   Object {
+    "flags": Array [],
     "hostname": "host.example.com",
     "id": 43,
     "severity": "medium",
     "title": "I am broken too",
   },
   Object {
+    "flags": Array [
+      "inhibitor",
+    ],
     "hostname": "foo.example.com",
     "id": 44,
     "severity": "high",
     "title": "Octocat is not happy",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 45,
     "severity": "low",
     "title": "Not enough credits",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 46,
     "severity": "medium",
     "title": "SELinux is turned off",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 47,
     "severity": "medium",
     "title": "Root password is too short",
   },
   Object {
+    "flags": Array [],
     "hostname": "foo.example.com",
     "id": 49,
     "severity": "high",

@@ -41,6 +41,16 @@ exports[`PreupgradeReportEntry should render 1`] = `
           }
         }
       />,
+      <InhibitorInfoItem
+        entry={
+          Object {
+            "id": 5,
+            "preupgradeReportId": 7,
+            "severity": "low",
+            "title": "no title",
+          }
+        }
+      />,
     ]
   }
   checkboxInput={

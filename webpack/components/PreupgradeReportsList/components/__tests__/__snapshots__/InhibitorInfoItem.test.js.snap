@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InhibitorInfoItem should render when inhibitor 1`] = `
+<InfoItem
+  itemId="inhibitor-5"
+  tooltipText="This issue inhibits the upgrade."
+>
+  <Icon
+    name="icon-exclamation-sign"
+    type="fa"
+  />
+</InfoItem>
+`;
+
+exports[`InhibitorInfoItem should render when not inhibitor 1`] = `
+<EmptyInfoItem
+  attr="flags"
+  entry={
+    Object {
+      "flags": Array [],
+      "id": 5,
+      "preupgradeReportId": 7,
+      "severity": "low",
+      "title": "no title",
+    }
+  }
+  key="inhibitor-5"
+/>
+`;

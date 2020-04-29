@@ -19,6 +19,7 @@ const EntriesFilter = ({
     { value: 'severity', label: __('Severity') },
     { value: 'hostname', label: __('Host') },
     { value: 'fix', label: __('Fix Type') },
+    { value: 'inhibitor', label: __('Inhibitor') },
   ];
 
   const severityTypes = [
@@ -35,9 +36,16 @@ const EntriesFilter = ({
     { value: 'command', label: __('Command') },
   ];
 
+  const inhibitorTypes =[
+    { value: '', label: __('All') },
+    { value: 'yes', label: __('Yes') },
+    { value: 'no', label: __('No') },
+  ]
+
   const selectOptionMapping = {
     severity: severityTypes,
     fix: fixTypes,
+    inhibitor: inhibitorTypes,
   };
 
   const findLabel = (selectOptions, currentValue) =>
@@ -53,7 +61,7 @@ const EntriesFilter = ({
     );
   }
 
-  if (['severity', 'fix'].includes(filterType)) {
+  if (['severity', 'fix', 'inhibitor'].includes(filterType)) {
     const options = selectOptionMapping[filterType];
 
     filterValueField = (

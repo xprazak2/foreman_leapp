@@ -3,6 +3,8 @@ import { ListView, Grid, Icon } from 'patternfly-react';
 import PropTypes from 'prop-types';
 import './foreman_leapp.scss';
 
+import InhibitorInfoItem from './InhibitorInfoItem';
+
 import {
   itemIteratorId,
   presentSeverity,
@@ -34,6 +36,7 @@ const PreupgradeReportEntry = ({ entry }) => (
         {entry.severity}
       </ListView.InfoItem>,
       hasRemediations(entry),
+      <InhibitorInfoItem entry={entry} />
     ]}
   >
     <Grid fluid>

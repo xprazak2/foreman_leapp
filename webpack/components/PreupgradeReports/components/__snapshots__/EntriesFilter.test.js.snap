@@ -71,6 +71,17 @@ exports[`EntriresFilter should render for host filter 1`] = `
             >
               Fix Type
             </MenuItem>
+            <MenuItem
+              active={false}
+              bsClass="dropdown"
+              disabled={false}
+              divider={false}
+              header={false}
+              key="inhibitor"
+              onClick={[Function]}
+            >
+              Inhibitor
+            </MenuItem>
           </DropdownButton>
           <FormControl
             bsClass="form-control"
@@ -156,6 +167,17 @@ exports[`EntriresFilter should render for severity filter 1`] = `
               onClick={[Function]}
             >
               Fix Type
+            </MenuItem>
+            <MenuItem
+              active={false}
+              bsClass="dropdown"
+              disabled={false}
+              divider={false}
+              header={false}
+              key="inhibitor"
+              onClick={[Function]}
+            >
+              Inhibitor
             </MenuItem>
           </DropdownButton>
           <DropdownButton
@@ -295,6 +317,17 @@ exports[`EntriresFilter should render for title filter 1`] = `
               onClick={[Function]}
             >
               Fix Type
+            </MenuItem>
+            <MenuItem
+              active={false}
+              bsClass="dropdown"
+              disabled={false}
+              divider={false}
+              header={false}
+              key="inhibitor"
+              onClick={[Function]}
+            >
+              Inhibitor
             </MenuItem>
           </DropdownButton>
           <FormControl
