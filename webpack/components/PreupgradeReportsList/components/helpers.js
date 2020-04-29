@@ -5,17 +5,11 @@ import EmptyInfoItem from './EmptyInfoItem';
 export const itemIteratorId = (entry, ...rest) =>
   `${entry.id}-${entry.preupgradeReportId}-${rest.join('-')}`;
 
-export const presentSeverity = severity => {
-  switch (severity) {
-    case 'low':
-      return '#39a5dc';
-    case 'medium':
-      return '#f0ab00';
-    case 'high':
-      return '#cc0000';
-    default:
-      return '#39a5dc';
+export const severityToCssClass = severity => {
+  if (['low', 'medium', 'high'].includes(severity)) {
+    return `severity-${severity}`;
   }
+  return `severity-unknown`;
 };
 
 export const tagInfo = tags =>
@@ -63,7 +57,7 @@ export const getSeverity = entry => {
           <Icon
             type="pf"
             name="resources-full"
-            style={{ color: presentSeverity(entry.severity) }}
+            className={severityToCssClass(entry.severity)}
           />{' '}
           {entry.severity}
         </Grid.Col>

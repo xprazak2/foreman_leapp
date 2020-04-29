@@ -3,9 +3,10 @@ import { ListView, Grid, Icon } from 'patternfly-react';
 import PropTypes from 'prop-types';
 import './foreman_leapp.scss';
 
+import InhibitorInfoItem from './InhibitorInfoItem';
+
 import {
   itemIteratorId,
-  presentSeverity,
   hasRemediations,
   getExternals,
   getRemediations,
@@ -13,6 +14,7 @@ import {
   getSeverity,
   getSummary,
   getTags,
+  severityToCssClass,
 } from './helpers';
 import { entryFixable } from '../../PreupgradeReports/PreupgradeReportsHelpers';
 
@@ -37,11 +39,12 @@ const PreupgradeReportEntry = ({ entry, isEntrySelected, toggleSelected }) => (
         <Icon
           type="pf"
           name="resources-full"
-          style={{ color: presentSeverity(entry.severity) }}
+          className={severityToCssClass(entry.severity)}
         />
         {entry.severity}
       </ListView.InfoItem>,
       hasRemediations(entry),
+      <InhibitorInfoItem key={itemIteratorId(entry, 'flags')} entry={entry} />,
     ]}
   >
     <Grid fluid>
