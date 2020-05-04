@@ -20,6 +20,8 @@ template_inputs:
   default: "true"
 %>
 
+<%= render_template 'Check Leapp' %>
+
 <%= build_remediation_plan(input('remediation_ids').split(','), @host) %>
 <% if input('run_preupgrade') == 'true' %>
   <%= render_template 'Run preupgrade via Leapp' %>
