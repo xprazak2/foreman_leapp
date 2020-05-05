@@ -1,4 +1,5 @@
 import React from 'react';
+import { DebounceInput } from 'react-debounce-input';
 import { DropdownButton, MenuItem, Form, Col, Row } from 'patternfly-react';
 import PropTypes from 'prop-types';
 
@@ -53,9 +54,9 @@ const EntriesFilter = ({
 
   if (['title', 'hostname'].includes(filterType)) {
     filterValueField = (
-      <Form.FormControl
-        className="entries-filter-reset-height"
-        type="text"
+      <DebounceInput
+        className="form-control entries-filter-reset-height"
+        debounceTimeout={300}
         onChange={event => onFilterValueChange(event.target.value)}
       />
     );
@@ -83,32 +84,30 @@ const EntriesFilter = ({
   }
 
   return (
-    <Form>
-      <Row>
-        <Col md={4}>
-          <Form.FormGroup>
-            <Form.InputGroup>
-              <DropdownButton
-                id="entry-filter"
-                title={findLabel(filterTypes, filterType)}
-                componentClass={Form.InputGroup.Button}
-              >
-                {filterTypes.map(type => (
-                  <MenuItem
-                    key={type.value}
-                    active={filterType === type.value}
-                    onClick={() => onFilterTypeChange(type.value)}
-                  >
-                    {type.label}
-                  </MenuItem>
-                ))}
-              </DropdownButton>
-              {filterValueField}
-            </Form.InputGroup>
-          </Form.FormGroup>
-        </Col>
-      </Row>
-    </Form>
+    <Row>
+      <Col md={4}>
+        <Form.FormGroup>
+          <Form.InputGroup>
+            <DropdownButton
+              id="entry-filter"
+              title={findLabel(filterTypes, filterType)}
+              componentClass={Form.InputGroup.Button}
+            >
+              {filterTypes.map(type => (
+                <MenuItem
+                  key={type.value}
+                  active={filterType === type.value}
+                  onClick={() => onFilterTypeChange(type.value)}
+                >
+                  {type.label}
+                </MenuItem>
+              ))}
+            </DropdownButton>
+            {filterValueField}
+          </Form.InputGroup>
+        </Form.FormGroup>
+      </Col>
+    </Row>
   );
 };
 
