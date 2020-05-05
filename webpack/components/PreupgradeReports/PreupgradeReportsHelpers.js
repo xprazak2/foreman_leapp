@@ -13,7 +13,7 @@ export const entryFixable = entryWithFixKind('command');
 export const isInhibitor = entry =>
   entry.flags && entry.flags.some(flag => flag === 'inhibitor');
 
-export const byInhibitor = value => entry => {
+export const filterByInhibitor = value => entry => {
   const inhibitsUpgrade = isInhibitor(entry);
 
   if (value === 'yes') {
@@ -72,7 +72,7 @@ export const filterEntries = (attribute, value, entries) => {
   }
 
   if (attribute === 'inhibitor') {
-    return entries.filter(byInhibitor(value));
+    return entries.filter(filterByInhibitor(value));
   }
 
   return entries.filter(entry =>
@@ -106,12 +106,18 @@ export const bySeverity = attribute => (first, second) => {
 export const byFix = (first, second) => {
   const firstAttr = !!(first.detail && first.detail.remediations);
   const secondAttr = !!(second.detail && second.detail.remediations);
+  return byBoolComparison(firstAttr, secondAttr);
+};
 
-  if (firstAttr === secondAttr) {
+export const byInhibitor = (first, second) =>
+  byBoolComparison(isInhibitor(first), isInhibitor(second));
+
+const byBoolComparison = (first, second) => {
+  if (first === second) {
     return 0;
   }
 
-  if (firstAttr) {
+  if (first) {
     return -1;
   }
   return 1;
@@ -137,5 +143,10 @@ export const sortEntries = (entries, sort) => {
   if (sort.attribute === 'fix') {
     sorted = entriesCopy.sort(byFix);
   }
+
+  if (sort.attribute === 'inhibitor') {
+    sorted = entriesCopy.sort(byInhibitor);
+  }
+
   return sort.order === 'asc' ? sorted : sorted.reverse();
 };

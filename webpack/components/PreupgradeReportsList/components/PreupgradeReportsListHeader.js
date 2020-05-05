@@ -12,6 +12,7 @@ const PreupgradeReportsListHeader = ({ sort, changeSort, toggleSelectAll }) => {
     { label: __('Host'), value: 'hostname' },
     { label: __('Severity'), value: 'severity' },
     { label: __('Has Remediation?'), value: 'fix' },
+    { label: __('Inhibitor?'), value: 'inhibitor' },
   ];
 
   const additionalInfo = additionalInfoColumns.map((col, idx) => (

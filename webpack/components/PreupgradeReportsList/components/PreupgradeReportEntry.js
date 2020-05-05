@@ -27,6 +27,7 @@ const PreupgradeReportEntry = ({ entry, isEntrySelected, toggleSelected }) => (
       <input
         type="checkbox"
         value={isEntrySelected}
+        checked={isEntrySelected}
         disabled={!entryFixable(entry)}
         onChange={() => toggleSelected(entry, isEntrySelected)}
       />

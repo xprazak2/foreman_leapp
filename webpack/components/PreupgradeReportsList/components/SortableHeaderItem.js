@@ -16,15 +16,23 @@ const SortableHeaderItem = ({ value, title, sort, changeSort }) => {
 
   const active = sort.attribute === value;
 
+  const clickHandler = () => {
+    let direction = 'asc';
+
+    if (active) {
+      direction = sort.order === 'asc' ? 'desc' : 'asc';
+    }
+
+    changeSort({
+      attribute: value,
+      order: direction,
+    });
+  };
+
   return (
     <span
       className={`sortable-header ${classNames({ active })}`}
-      onClick={() =>
-        changeSort({
-          attribute: value,
-          order: sort.order === 'asc' ? 'desc' : 'asc',
-        })
-      }
+      onClick={clickHandler}
     >
       {chooseChevron(active, sort.order)}
       {title}

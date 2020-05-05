@@ -59,6 +59,24 @@ exports[`PreupgradeReportsListHeader should render 1`] = `
           />
         </strong>
       </InfoItem>,
+      <InfoItem
+        itemId="3"
+        tooltipText=""
+      >
+        <strong>
+          <SortableHeaderItem
+            changeSort={[Function]}
+            sort={
+              Object {
+                "attribute": "",
+                "order": "asc",
+              }
+            }
+            title="Inhibitor?"
+            value="inhibitor"
+          />
+        </strong>
+      </InfoItem>,
     ]
   }
   checkboxInput={
