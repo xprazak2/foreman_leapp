@@ -1,32 +1,23 @@
 # ForemanLeapp
 
-This plugin allows to run inplace upgrades for rhel7 vms in foreman using leapp tool.
-For more information about leapp check [github](https://github.com/oamg/leapp) or
-[developer docs](https://leapp.readthedocs.io/en/latest/).
+This plugin allows to run inplace upgrades for RHEL 7 hosts in Foreman using Leapp tool.
+For more information about Leapp tool check [github](https://github.com/oamg/leapp) or [developer docs](https://leapp.readthedocs.io/en/latest/).
 
 ## Installation
 
-See [How_to_Install_a_Plugin](http://projects.theforeman.org/projects/foreman/wiki/How_to_Install_a_Plugin)
-for how to install Foreman plugins
+See [Plugins Manual](https://www.theforeman.org/plugins/#2.Installation) for how to install Foreman plugins.
 
 ## Usage
 
-The plugin will add 2 remote execution jobs, "Run preupgrade via leapp" and "Run upgrade via leapp". Only
-preupgrade reports storage and retrieval has been implemented so far.
+The plugin will add following jobs:
+- Run preupgrade via Leapp
+- Remediation plan
+- Run upgrade via Leapp
 
-After running a preupgrade remote execution job on one or more foreman hosts the report can be retrieved from foreman db.
-
-The retrieval api looks like:
-
-- to fetch a specific preupgrade report - GET http://FOREMAN_URL:FOREMAN_PORT/api/v2/preupgrade_reports/REPORT_ID.
-- to fetch all reports for specific job invocation - GET http://FOREMAN_URL:FOREMAN_PORT/api/v2/aggregation/JOB_INVOCATION_ID.
-- to fetch last preupgrade report per host - GET http://FOREMAN_URL:FOREMAN_PORT/api/v2/preupgrade_reports/hosts/HOST_NAME_OR_ID/last.
-
-## TODO
-
-- Unit tests
-- Automate rubocop checks
-- Frontend (either from scratch or adapt the react/patternfly/typescript one for cockpit upgrades)
+## Api
+- `GET /api/preupgrade_reports` List Preupgrade reports
+- `GET /api/preupgrade_reports/:id` Show Preupgrade report
+- `GET /api/job_invocations/:id/preupgrade_reports` List Preupgrade reports for Job invocation
 
 ## Contributing
 
