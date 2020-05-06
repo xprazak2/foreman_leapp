@@ -17,7 +17,7 @@ Array [
         "flags": Array [],
         "hostname": "host.example.com",
         "id": 42,
-        "severity": "Too severe to talk about",
+        "severity": "info",
         "title": "Fix me!",
       },
       Object {

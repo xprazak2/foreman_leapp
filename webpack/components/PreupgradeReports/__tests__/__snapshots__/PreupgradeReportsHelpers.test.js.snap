@@ -157,13 +157,29 @@ Array [
 ]
 `;
 
+exports[`PreupgradeReportsHelpers should return fixable entries 1`] = `
+Array [
+  Object {
+    "detail": Object {
+      "remediations": Array [
+        Object {
+          "type": "command",
+        },
+      ],
+    },
+    "severity": "high",
+    "title": "Octocat is not happy",
+  },
+]
+`;
+
 exports[`PreupgradeReportsHelpers should return flattened entrues 1`] = `
 Array [
   Object {
     "flags": Array [],
     "hostname": "host.example.com",
     "id": 42,
-    "severity": "Too severe to talk about",
+    "severity": "info",
     "title": "Fix me!",
   },
   Object {
@@ -209,6 +225,265 @@ Array [
     "id": 49,
     "severity": "high",
     "title": "No chocolate chip cookies in cookie jar",
+  },
+]
+`;
+
+exports[`PreupgradeReportsHelpers should sort entries by hostname 1`] = `
+Array [
+  Object {
+    "flags": Array [
+      "inhibitor",
+    ],
+    "hostname": "foo.example.com",
+    "id": 44,
+    "severity": "high",
+    "title": "Octocat is not happy",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 45,
+    "severity": "low",
+    "title": "Not enough credits",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 46,
+    "severity": "medium",
+    "title": "SELinux is turned off",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 47,
+    "severity": "medium",
+    "title": "Root password is too short",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 49,
+    "severity": "high",
+    "title": "No chocolate chip cookies in cookie jar",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "host.example.com",
+    "id": 42,
+    "severity": "info",
+    "title": "Fix me!",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "host.example.com",
+    "id": 43,
+    "severity": "medium",
+    "title": "I am broken too",
+  },
+]
+`;
+
+exports[`PreupgradeReportsHelpers should sort entries by remediations 1`] = `
+Array [
+  Object {
+    "detail": Object {
+      "remediations": Array [
+        Object {
+          "type": "hint",
+        },
+      ],
+    },
+    "severity": "info",
+    "title": "Fix me!",
+  },
+  Object {
+    "detail": Object {
+      "remediations": Array [
+        Object {
+          "type": "command",
+        },
+      ],
+    },
+    "severity": "high",
+    "title": "Octocat is not happy",
+  },
+  Object {
+    "severity": "medium",
+    "title": "I am broken too",
+  },
+  Object {
+    "severity": "low",
+    "title": "Not enough credits",
+  },
+]
+`;
+
+exports[`PreupgradeReportsHelpers should sort entries by severity 1`] = `
+Array [
+  Object {
+    "flags": Array [],
+    "hostname": "host.example.com",
+    "id": 42,
+    "severity": "info",
+    "title": "Fix me!",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 45,
+    "severity": "low",
+    "title": "Not enough credits",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "host.example.com",
+    "id": 43,
+    "severity": "medium",
+    "title": "I am broken too",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 46,
+    "severity": "medium",
+    "title": "SELinux is turned off",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 47,
+    "severity": "medium",
+    "title": "Root password is too short",
+  },
+  Object {
+    "flags": Array [
+      "inhibitor",
+    ],
+    "hostname": "foo.example.com",
+    "id": 44,
+    "severity": "high",
+    "title": "Octocat is not happy",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 49,
+    "severity": "high",
+    "title": "No chocolate chip cookies in cookie jar",
+  },
+]
+`;
+
+exports[`PreupgradeReportsHelpers should sort entries by title in ascending order 1`] = `
+Array [
+  Object {
+    "flags": Array [],
+    "hostname": "host.example.com",
+    "id": 42,
+    "severity": "info",
+    "title": "Fix me!",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "host.example.com",
+    "id": 43,
+    "severity": "medium",
+    "title": "I am broken too",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 49,
+    "severity": "high",
+    "title": "No chocolate chip cookies in cookie jar",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 45,
+    "severity": "low",
+    "title": "Not enough credits",
+  },
+  Object {
+    "flags": Array [
+      "inhibitor",
+    ],
+    "hostname": "foo.example.com",
+    "id": 44,
+    "severity": "high",
+    "title": "Octocat is not happy",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 47,
+    "severity": "medium",
+    "title": "Root password is too short",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 46,
+    "severity": "medium",
+    "title": "SELinux is turned off",
+  },
+]
+`;
+
+exports[`PreupgradeReportsHelpers should sort entries by title in descending order 1`] = `
+Array [
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 46,
+    "severity": "medium",
+    "title": "SELinux is turned off",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 47,
+    "severity": "medium",
+    "title": "Root password is too short",
+  },
+  Object {
+    "flags": Array [
+      "inhibitor",
+    ],
+    "hostname": "foo.example.com",
+    "id": 44,
+    "severity": "high",
+    "title": "Octocat is not happy",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 45,
+    "severity": "low",
+    "title": "Not enough credits",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "foo.example.com",
+    "id": 49,
+    "severity": "high",
+    "title": "No chocolate chip cookies in cookie jar",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "host.example.com",
+    "id": 43,
+    "severity": "medium",
+    "title": "I am broken too",
+  },
+  Object {
+    "flags": Array [],
+    "hostname": "host.example.com",
+    "id": 42,
+    "severity": "info",
+    "title": "Fix me!",
   },
 ]
 `;

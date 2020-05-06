@@ -16,6 +16,7 @@ import {
   getTags,
   severityToCssClass,
 } from './helpers';
+
 import { entryFixable } from '../../PreupgradeReports/PreupgradeReportsHelpers';
 
 const PreupgradeReportEntry = ({ entry, isEntrySelected, toggleSelected }) => (
@@ -26,6 +27,7 @@ const PreupgradeReportEntry = ({ entry, isEntrySelected, toggleSelected }) => (
       <input
         type="checkbox"
         value={isEntrySelected}
+        checked={isEntrySelected}
         disabled={!entryFixable(entry)}
         onChange={() => toggleSelected(entry, isEntrySelected)}
       />

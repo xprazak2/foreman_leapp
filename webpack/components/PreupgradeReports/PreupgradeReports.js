@@ -14,6 +14,8 @@ import {
   anyEntriesFixable,
   filterEntries,
   idsForInvocationFromEntries,
+  sortEntries,
+  fixableEntries,
 } from './PreupgradeReportsHelpers';
 
 import NoReports from './components/NoReports';
@@ -26,6 +28,7 @@ const PreupgradeReports = ({
   const [filterType, setFilterType] = useState('title');
   const [filterValue, setFilterValue] = useState('');
   const [checked, setChecked] = useState([]);
+  const [sort, setSort] = useState({ attribute: '', order: 'desc' });
 
   const onFilterValueChange = value => {
     setFilterValue(value);
@@ -48,6 +51,20 @@ const PreupgradeReports = ({
     } else {
       setChecked([entry, ...checked]);
     }
+  };
+
+  const toggleSelectAll = () => {
+    const allFixable = fixableEntries(preupgradeReports);
+
+    if (checked.length === allFixable.length) {
+      setChecked([]);
+    } else {
+      setChecked(allFixable);
+    }
+  };
+
+  const changeSort = value => {
+    setSort({ ...sort, ...value });
   };
 
   return (
@@ -81,10 +98,13 @@ const PreupgradeReports = ({
         allEntries={filterEntries(
           filterType,
           filterValue,
-          flattenEntries(preupgradeReports)
+          sortEntries(flattenEntries(preupgradeReports), sort)
         )}
         isSelected={isSelected}
         toggleSelected={toggleSelected}
+        sort={sort}
+        changeSort={changeSort}
+        toggleSelectAll={toggleSelectAll}
       />
     </React.Fragment>
   );

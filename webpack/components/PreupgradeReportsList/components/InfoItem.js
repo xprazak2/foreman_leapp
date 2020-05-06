@@ -14,7 +14,7 @@ const InfoItem = ({ itemId, children, tooltipText }) => {
     </OverlayTrigger>
   );
   return (
-    <ListView.InfoItem key={itemId} className="additional-info-wide">
+    <ListView.InfoItem key={itemId}>
       {tooltipText ? overlay : children}
     </ListView.InfoItem>
   );
