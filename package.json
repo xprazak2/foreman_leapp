@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "tfm-lint --plugin -d /webpack",
     "link-leapp-js": "./script/link_leapp_js.sh",
-    "test": "tfm-test --plugin",
+    "test": "tfm-test --plugin --config jest.config.js",
     "test:watch": "tfm-test --plugin --watchAll",
     "test:current": "tfm-test --plugin --watch",
     "publish-coverage": "tfm-publish-coverage",
@@ -36,16 +36,10 @@
     "@theforeman/vendor-dev": "^4.2.1",
     "babel-eslint": "^10.0.0",
     "eslint": "^6.8.0",
+    "jest-svg-transformer": "^1.0.0",
     "prettier": "^1.19.1"
   },
   "dependencies": {
-    "jest-svg-transformer": "^1.0.0",
     "react-ellipsis-with-tooltip": "^1.0.8"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
-    }
   }
 }
